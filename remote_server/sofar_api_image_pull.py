@@ -27,7 +27,7 @@ from collections import defaultdict
 # Specify Spotter ID and API Token
 ##spotterId = "SPOT-32010C" # BM camera module
 
-#token = "add your token"
+token = "add your token"
 
 
 # Directory where parsed images and text files will be saved
