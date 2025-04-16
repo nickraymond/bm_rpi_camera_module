@@ -28,8 +28,6 @@ pillow==11.0.0
 pillow_heif==0.21.0
 pyftdi==0.55.4
 PyOpenGL==3.1.5
-PyQt5==5.15.2
-PyQt5-sip==12.8.1
 pyserial==3.5
 python-apt==2.2.1
 python-prctl==1.7

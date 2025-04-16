@@ -76,6 +76,10 @@ The system includes several configuration options:
 
 You can adjust these settings directly in the code or later extend the system to read them from environment variables or a configuration file.
 
+## Change Configurations for First Boot
+There is a folder in the repo "boot_config_files" to help users configure their Pi for the first time. This includes, defining the hostname (default `bmcam005`), turning on SSH, setting up wifi login, and setting a custom password (default `raspberry`). 
+
+If you want to customize any of these configurations, modify the files and then copy them over to the boot partition on the SD card before installing in the Pi.
 ## License
 
 This project is licensed under the **Apache License 2.0**. A full copy of the license is included in the [LICENSE](LICENSE) file in the repository root. This license is fully permissive and protects the Bristlemouth brand while allowing others to use, modify, and distribute the code.
