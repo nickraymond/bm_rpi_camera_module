@@ -1,1 +1,1 @@
-pi:$(openssl passwd -6 'your_password_here')
+pi:$(openssl passwd -6 'raspberry')
