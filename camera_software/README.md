@@ -7,7 +7,7 @@ This repository contains the source code and configuration files for an underwat
 ## 📦 Quick Start Options
 
 ### ✅ Wire up the BM Dev Kit + Pi + Camera
-![Wiring Diagram](camera_software/wiring_diagram.png)
+![](wiring_diagram.png)
 
 ### ✅ Use the Prebuilt SD Card Image 
 
