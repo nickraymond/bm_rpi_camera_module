@@ -1,94 +1,142 @@
-# Underwater Raspberry Pi Camera with Bristlemouth 
+# 🐠 Underwater Raspberry Pi Camera with Bristlemouth
 
-This repository contains the source code to control the underwater Raspberry Pi camera using Bristlemouth hardware. The project is designed to capture images, process them (including compression and splitting), and log the relevant data. It also includes utility scripts for testing the camera and UART (serial) communication.
+This repository contains the source code and configuration files for an underwater Raspberry Pi camera powered by Bristlemouth hardware. The project supports image capture, logging, compression, and communication over serial. It's designed for both field use and development.
 
-## Table of Contents
+---
 
-- [Overview](#overview)
-- [Main Script](#main-script)
-- [Helper Modules](#helper-modules)
-- [Example/Test Scripts](#exampletest-scripts)
-- [Configuration](#configuration)
-- [License](#license)
-- [Contributing](#contributing)
-- [Contact](#contact)
+## 📦 Quick Start Options
 
-## Overview
+### ✅ Wire up the BM Dev Kit + Pi + Camera
+![](/Users/nickraymond/PycharmProjects/RPi_Camera_Module/camera_software/BM Camera Wiring.png)
 
-The system is built around the `main_pi_camera.py` script, which acts as the orchestrator for the camera workflow. It integrates image capture, processing, logging, and hardware communication (e.g., via UART). The codebase is modular and includes separate helper modules for distinct tasks such as image processing, temperature reading, and log management.
+### ✅ Use the Prebuilt SD Card Image 
 
-## Main Script
+Download the full disk image [link TBD] and flash it to an SD card using [Balena Etcher](https://etcher.balena.io/) or Raspberry Pi Imager. This ensures:
 
-**main_pi_camera.py**  
-This is the heart of the system. It performs the following steps:
+- Pre-installed libraries
+- Pre-configured camera settings
+- Built-in Wi-Fi hotspot (`bmcam000`)
+- SSH enabled
 
-1. **Time Retrieval:**  
-   - Retrieves the current time either from a hardware RTC (if `USE_RTC` is set to `True`) or from the system clock.
-   - Checks if the current time is within a specified operational time window (configurable via `time_start` and `time_end`).
+```bash
+SSID: bmcam000
+Password: (none)
+SSH login: pi / raspberry
+```
 
-2. **Image Capture & Processing:**  
-   - Captures an image using the connected camera.
-   - Measures the raw file size.
-   - Reads the CPU temperature to monitor system health.
-   - Compresses the image and splits it into manageable buffers for transmission.
+You can then connect to the Pi over SSH:
+```bash
+ssh pi@192.168.4.1
+```
 
-3. **Logging & Cleanup:**  
-   - Logs all the relevant details (timestamp, file sizes, execution time, etc.) using a dedicated logging function.
-   - Closes the UART serial connection to ensure that resources are properly freed.
+---
 
-## Helper Modules
+## 🔄 Updating the Software
 
-- **process_image_v2.py:**  
-  Contains the functions that handle the image capture, compression, and transmission. It also defines key constants (e.g., image resolution, directory paths, and compression quality).
+If you're using the full disk image, you can still pull the latest code:
 
-- **read_CPU_temp.py:**  
-  Provides functionality to read the Raspberry Pi’s CPU temperature, which is logged to monitor hardware performance.
+```bash
+cd ~/bm_rpi_camera_module
+git pull origin main
+```
 
-- **save_image.py:**  
-  Responsible for saving the captured image to a specified directory on the filesystem.
+This will fetch updates to the codebase without affecting your system settings.
 
-- **split_and_send.py:**  
-  Handles the process of splitting the compressed image into smaller parts (buffers) and sending these parts over the network or serial connection.
+---
 
-- **log_update.py:**  
-  Manages the logging of capture events, including details such as timestamps, file sizes, and other metrics.
+## 📷 Camera Behavior on Boot
 
-## Example/Test Scripts
+By default, the Pi captures a single image **60 seconds after power on**. This is managed using `crontab`:
 
-- **bm_serial_example.py & bm_serial.py:**  
-  These scripts are included to test and demonstrate UART serial communication with the Bristlemouth hardware. They can be used to verify that the serial interface is functioning correctly before deploying the main camera workflow.
+```bash
+crontab -e
+```
 
-- **camera_test.py:**  
-  A standalone script to test the camera hardware. It allows you to quickly capture an image and verify that the camera is properly connected and configured.
+You’ll see:
+```bash
+@reboot sleep 60 && /usr/bin/python3 /home/pi/bm_rpi_camera_module/camera_software/main_pi_camera.py
+```
 
-- **uart_test.py:**  
-  Focuses on testing the UART interface. It is useful for debugging communication issues between the Raspberry Pi and other hardware components.
+You can modify this to change the delay or add recurring captures.
 
-## Configuration
+---
 
-The system includes several configuration options:
+## Testing the Camera
 
-- **USE_RTC:**  
-  A boolean flag defined in `main_pi_camera.py` that determines whether the system should use a hardware RTC for timekeeping (`True`) or fall back to the system clock (`False`).
+Test the camera connection using the included script:
 
-- **Time Window:**  
-  The operational time window is configurable via `time_start` and `time_end` (in military time), controlling when the camera should capture images.
+```bash
+cd ~/bm_rpi_camera_module/camera_software/examples
+python3 camera_test.py
+```
 
-You can adjust these settings directly in the code or later extend the system to read them from environment variables or a configuration file.
+Successful output will show `Image captured and saved as 'image_VGA.jpg'` in the terminal. If not, check the ribbon cable connection to the camera.
 
-## Change Configurations for First Boot
-There is a folder in the repo "boot_config_files" to help users configure their Pi for the first time. This includes, defining the hostname (default `bmcam005`), turning on SSH, setting up wifi login, and setting a custom password (default `raspberry`). 
+---
 
-If you want to customize any of these configurations, modify the files and then copy them over to the boot partition on the SD card before installing in the Pi.
-## License
+## Project Architecture
 
-This project is licensed under the **Apache License 2.0**. A full copy of the license is included in the [LICENSE](LICENSE) file in the repository root. This license is fully permissive and protects the Bristlemouth brand while allowing others to use, modify, and distribute the code.
+### Main Script: `main_pi_camera.py`
+Handles:
+- Time retrieval (RTC or system clock)
+- Image capture & compression
+- CPU temperature readout
+- Logging and UART communication
 
-**Where to add the license details:**
-- Place a `LICENSE` file in the root directory of your repository with the full text of the Apache 2.0 license.
-- Include a short license header in the source files (optional but recommended for clarity).
+### Helper Modules:
+- `process_image_v2.py`: Capture, compress, and buffer image
+- `read_CPU_temp.py`: Get Pi CPU temp
+- `save_image.py`: Save to disk
+- `split_and_send.py`: Chunk and transmit images
+- `log_update.py`: Record logs (size, time, temp)
+
+### Example/Test Scripts:
+- `camera_test.py`: Quick test image capture
+- `uart_test.py`: Test UART connectivity
+- `bm_serial_example.py`: Example Bristlemouth serial logic
+
+---
+
+## ⚙️ Configuration Options
+
+- `USE_RTC` (in `main_pi_camera.py`): Use external RTC if available
+- `time_start`, `time_end`: Set operational hours (24h format)
+
+You can change these directly in the Python source for now.
+
+---
+
+## 🔧 First Boot Config (For Custom SD Images)
+
+Inside `boot_config_files/`, you’ll find:
+- `hostname`: Sets Pi hostname (default: `bmcam000`)
+- `wpa_supplicant.conf`: Preload Wi-Fi creds (optional)
+- `ssh`: Enable SSH on first boot
+- `userconf`: Set default username/password
+
+Copy these into the **boot** partition before first boot to auto-configure the device.
+
+---
 
 ## Contributing
 
-Contributions are welcome! Please follow the standard fork-and-pull request workflow and include tests where applicable.
+Contributions are welcome!
+
+- Fork the repo
+- Create a feature branch
+- Submit a pull request with clear description and test results
+
+---
+
+## 📄 License
+
+This project is licensed under the **Apache License 2.0**. You’re free to use, modify, and distribute it with attribution. See [`LICENSE`](LICENSE) for full details.
+
+---
+
+## 📬 Contact
+
+Have questions or want to contribute hardware integrations? Open an issue or contact Nick Raymond via the [Bristlemuth forums](https://bristlemouth.discourse.group/).
+
+---
 
