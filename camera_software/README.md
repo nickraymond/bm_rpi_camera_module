@@ -106,18 +106,6 @@ You can change these directly in the Python source for now.
 
 ---
 
-## 🔧 First Boot Config (For Custom SD Images)
-
-Inside `boot_config_files/`, you’ll find:
-- `hostname`: Sets Pi hostname (default: `bmcam000`)
-- `wpa_supplicant.conf`: Preload Wi-Fi creds (optional)
-- `ssh`: Enable SSH on first boot
-- `userconf`: Set default username/password
-
-Copy these into the **boot** partition before first boot to auto-configure the device.
-
----
-
 ## Contributing
 
 Contributions are welcome!
