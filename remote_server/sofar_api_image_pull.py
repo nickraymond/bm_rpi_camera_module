@@ -27,7 +27,7 @@ from collections import defaultdict
 # Specify Spotter ID and API Token
 ##spotterId = "SPOT-32010C" # BM camera module
 
-token = "add your token"
+token = "019058d08091ed2b1f96e774344874"
 
 
 # Directory where parsed images and text files will be saved
@@ -318,11 +318,11 @@ def process_grouped_data(grouped_data, img_directory_base, csv_path, image_log_p
 
 def main():
     # Define a list of Spotter IDs to process
-    spotter_ids = ["SPOT-32010C","SPOT-31380C", "SPOT-32071C"]  # Add as many IDs as needed
+    spotter_ids = ["SPOT-31593C"]  # Add as many IDs as needed
 
     # Define the start and end dates for API calls
-    start_date = "2025-03-22T00:00:00Z"
-    end_date = "2025-03-25T00:00:00Z"
+    start_date = "2025-05-17T00:00:00Z"
+    end_date = "2025-05-19T00:00:00Z"
 
     for spotter_id in spotter_ids:
         print(f"\nProcessing Spotter ID: {spotter_id}")
