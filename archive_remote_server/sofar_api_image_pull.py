@@ -1,26 +1,34 @@
-# filename: NR_data_pull_v11.py >>> Remora_v11.py
-
-# description: parse the data from API and save images + CSV file with summary of lat, lon, filename,
-# TODO
-# add info to the spotter_image_log: number of messages created, number of messages received, error messages
+# filename: sofar_api_image_pull.py
+# description: parse the data from API and save images + CSV file with summary of lat, lon, filename, and message
+#
+# Copyright 2025 Nick Raymond
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+import argparse
 import os
 import re
 import base64
 import requests
 import csv
-from data_handling import json_to_csv, save_img_entry, save_txt_entry
 from collections import defaultdict
 
 
 
 # Specify Spotter ID and API Token
-# #spotterId = "SPOT-31380C" # BM camera module on SPARC
-# spotterId = "SPOT-32071C" # BM camera module deck, RTC does not work
 ##spotterId = "SPOT-32010C" # BM camera module
 
-#token = "90bda8b0a39b9570b548ab6f7a1aea" # sofar_eng key
-token = "019058d08091ed2b1f96e774344874" # nick's admin key
-#token = "add your token"
+#token = "019058d08091ed2b1f96e774344874" # NR Admin
+#token = "90bda8b0a39b9570b548ab6f7a1aea" Spotter ENG
 
 
 # Directory where parsed images and text files will be saved
@@ -47,8 +55,24 @@ if not os.path.exists(image_log_path):
         writer = csv.writer(file)
         writer.writerow(["Timestamp", "Latitude", "Longitude", "Node ID", "Filename", "File Size (bytes)"])  # CSV header for image logs
 
+def json_to_csv(csv_path, json_data):
+    # Check if 'data' is in json_data and if it's a list
+    if 'data' in json_data and isinstance(json_data['data'], list):
 
-def api_login(spotterId, start_date=None, end_date=None):
+        # Open the file for writing
+        with open(csv_path, mode='w', newline='') as file:
+            # Assuming all entries have the same keys, so take the keys from the first entry for the header
+            headers = json_data['data'][0].keys()
+            writer = csv.DictWriter(file, fieldnames=headers)
+            writer.writeheader()  # Write the header
+
+            # Iterate over each entry in the data array and write it to the CSV file
+            for entry in json_data['data']:
+                writer.writerow(entry)
+    else:
+        print("Error: The provided JSON data is missing 'data' key or it's not a list.")
+
+def api_login(spotterId, token, start_date=None, end_date=None):
     """Fetch data from the Spotter API within a specified date range."""
     if start_date and end_date:
         api_url_with_dates = f"https://api.sofarocean.com/api/sensor-data?spotterId={spotterId}&startDate={start_date}&endDate={end_date}&token={token}"
@@ -293,10 +317,11 @@ def process_grouped_data(grouped_data, img_directory_base, csv_path, image_log_p
     print(f"Total images saved across all node IDs: {total_images_saved}")
 
 
-def main():
+def main_hardcode():
     # Define a list of Spotter IDs to process
-    spotter_ids = ["SPOT-31593C"]  # Add as many IDs as needed
+    spotter_ids = ["SPOT-31593C", "SPOT-31081C"]  # Add as many IDs as needed
 
+    # Define the start and end dates for API calls
     start_date = "2025-05-17T00:00:00Z"
     end_date = "2025-05-19T00:00:00Z"
 
@@ -324,6 +349,32 @@ def main():
         except Exception as e:
             print(f"Error processing Spotter ID {spotter_id}: {e}")
 
+def main(spotter_ids, start_date, end_date, token):
+    for spotter_id in spotter_ids:
+        print(f"\nProcessing Spotter ID: {spotter_id}")
+        try:
+            api_data = api_login(spotter_id, token=token, start_date=start_date, end_date=end_date)
 
+            spotter_img_directory = os.path.join(img_directory, spotter_id)
+            os.makedirs(spotter_img_directory, exist_ok=True)
+
+            grouped_data = process_json(api_data, spotter_img_directory)
+            process_grouped_data(grouped_data, spotter_img_directory, csv_path, image_log_path)
+            json_to_csv(csv_path, api_data)
+
+        except Exception as e:
+            print(f"Error processing Spotter ID {spotter_id}: {e}")
+
+# if using hardcode method
+# if __name__ == "__main__":
+#     main()
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Fetch and process Spotter API image data.")
+    parser.add_argument('--spotters', nargs='+', default=["SPOT-31593C"], help='List of Spotter IDs')
+    parser.add_argument('--start', default="2025-05-18T00:00:00Z", help='Start date in ISO format')
+    parser.add_argument('--end', default="2025-05-20T00:00:00Z", help='End date in ISO format')
+    parser.add_argument('--token', default="019058d08091ed2b1f96e774344874", help='You API token')
+
+    args = parser.parse_args()
+    main(args.spotters, args.start, args.end, args.token)
+
