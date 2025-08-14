@@ -1,3 +1,4 @@
 # created by virtualenv automatically
-.venv/bin
+../.venv/bin
 .venv/
+do_not_load.py
