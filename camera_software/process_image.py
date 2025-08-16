@@ -59,7 +59,7 @@ os.makedirs(BUFFER_DIRECTORY, exist_ok=True)
 
 # Define the image quality and compression values
 COMPRESSION_QUALITY = 25  # Adjust this value as needed (e.g., 25, 50, 75)
-RESOLUTION_KEY = "1080p"  # Adjust this value as needed "720p", "1080p"...
+RESOLUTION_KEY = "VGA"  # Adjust this value as needed "720p", "1080p"...
 
 
 
