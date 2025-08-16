@@ -8,3 +8,9 @@ topics:
 
 led:
   pin: 17                # BCM pin for the example LED handler
+
+clock:
+  enabled: true
+  max_backward_seconds: 0        # 0 = never move backwards
+  apply_if_drift_seconds: 2      # only step if |drift| > 2s
+  min_apply_interval_seconds: 300  # at most once every 5 min
