@@ -1,0 +1,10 @@
+uart_device: /dev/serial0
+baudrate: 115200
+
+topics:
+  rtc: "spotter/utc-time"
+  # add more as you grow:
+  led: "camera/led"      # optional example
+
+led:
+  pin: 17                # BCM pin for the example LED handler
