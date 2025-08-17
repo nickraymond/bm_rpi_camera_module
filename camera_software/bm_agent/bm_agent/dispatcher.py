@@ -1,54 +1,44 @@
-# from .handlers import rtc
-# from .handlers import clock  # NEW
-# 
-# 
-# try:
-# 	from .handlers import led
-# 	_HAS_LED = True
-# except Exception:
-# 	_HAS_LED = False
-# 
-# def build_dispatch(cfg):
-# 		topics = cfg["topics"]
-# 		table = {
-# 			topics.get("rtc"): rtc.handle,
-# 		}
-# 		# Use the same RTC topic for clock sync; it just decides when to act
-# 		if cfg.get("clock", {}).get("enabled", True) and topics.get("rtc"):
-# 			table[topics["rtc"]] = lambda node, topic, data, ctx: (
-# 				rtc.handle(node, topic, data, ctx),
-# 				clock.handle(node, topic, data, ctx),
-# 			)
-# 		return {k: v for k, v in table.items() if k}
-# 	
-# 	def init_handlers(cfg):
-# 		ctx = {"cfg": cfg}
-# 		clock.init(ctx)   # NEW
-# 		return ctx
-# 	
-# 	def cleanup_handlers(ctx):
-# 		clock.cleanup(ctx)
-from .handlers import rtc
-from .handlers import clock
+# bm_agent/dispatcher.py
+from __future__ import annotations
+from typing import Callable, Dict, Any
+from .handlers import rtc, clock
 
-def build_dispatch(cfg):
-	topics = cfg["topics"]
-	table = {}
+Handler = Callable[[int, str, bytes, dict], None]
 
-	rtc_topic = topics.get("rtc")
-	if rtc_topic:
-		# fan-out: log RTC AND feed the clock sync
-		def _rtc_and_clock(node, topic, data, ctx):
-			rtc.handle(node, topic, data, ctx)
-			clock.handle(node, topic, data, ctx)
-		table[rtc_topic] = _rtc_and_clock
+def init_handlers(cfg: dict) -> dict:
+	ctx: dict[str, Any] = {"cfg": cfg}
+	# Diagnostics: show exactly which handler modules got imported.
+	try:
+		print(f"[PATH] rtc module:   {rtc.__file__}")
+		print(f"[PATH] clock module: {clock.__file__}")
+	except Exception:
+		pass
 
-	return {k: v for k, v in table.items() if k}
-
-def init_handlers(cfg):
-	ctx = {"cfg": cfg}
-	clock.init(ctx)
+	# Prefer module-level init() if present; otherwise construct ClockSync directly.
+	if hasattr(clock, "init"):
+		clock.init(ctx)
+	else:
+		print("[WARN] handlers.clock has no init(); constructing ClockSync directly")
+		if hasattr(clock, "ClockSync"):
+			ctx["clock"] = clock.ClockSync(cfg.get("clock", {}))
+		else:
+			raise RuntimeError("handlers.clock missing both init() and ClockSync")
 	return ctx
 
-def cleanup_handlers(ctx):
-	clock.cleanup(ctx)
+def cleanup_handlers(ctx: dict) -> None:
+	try:
+		if hasattr(clock, "cleanup"):
+			clock.cleanup(ctx)
+	except Exception:
+		pass
+
+def build_dispatch(cfg: dict) -> Dict[str, Handler]:
+	topics = cfg.get("topics", {})
+	rtc_topic = topics.get("rtc")
+	dispatch: Dict[str, Handler] = {}
+	if rtc_topic:
+		def _rtc_and_clock(node_id: int, topic: str, data: bytes, ctx: dict) -> None:
+			rtc.handle(node_id, topic, data, ctx)     # [RTC] pretty-print
+			clock.handle(node_id, topic, data, ctx)   # [CLOCK] sync logic
+		dispatch[str(rtc_topic)] = _rtc_and_clock
+	return dispatch
