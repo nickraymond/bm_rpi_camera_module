@@ -11,7 +11,6 @@ led:
 
 clock:
   enabled: true
-  apply_if_drift_seconds: 0.3     # was 2
-  min_apply_interval_seconds: 300 # keep this to avoid thrashing
-  max_backward_seconds: 0
-  apply_immediately_on_boot: true
+  max_backward_seconds: 0        # 0 = never move backwards
+  apply_if_drift_seconds: 1      # only step if |drift| > 2s
+  min_apply_interval_seconds: 11  # at most once every 5 min
