@@ -93,6 +93,26 @@ sudo journalctl -u bm-agent.service -f
 date -u
 ```
 
+### How to send custom BM messages to Pi
+Run the following command to run a test agent
+```
+python /home/pi/bm_camera/camera_software/bm_agent/run_agent.py
+```
+
+Connect to Spotter over UBS, type the following into the terminal. NOTE: You must follow a specific message format...
+bm pub <topic> <data> <type> <version>
+
+- topic = "test/pi"
+- data = payload you want to send, no spaces allowed
+- type = "text"
+- version = "0"
+
+these settings work, see example below
+
+```
+bm pub test/pi hello_world text 0
+```
+
 ### How to Add a New Topic (example: LED)
 
 1. Update config.yaml:

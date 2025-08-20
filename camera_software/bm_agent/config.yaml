@@ -5,6 +5,9 @@ topics:
   rtc: "spotter/utc-time"
   # add more as you grow:
   led: "camera/led"      # optional example
+  camera_still: camera/still/capture
+  camera_video: camera/video/capture
+  test_pi: test/pi
 
 led:
   pin: 17                # BCM pin for the example LED handler
@@ -14,3 +17,5 @@ clock:
   max_backward_seconds: 0        # 0 = never move backwards
   apply_if_drift_seconds: 1      # only step if |drift| > 2s
   min_apply_interval_seconds: 11  # at most once every 5 min
+  
+  
