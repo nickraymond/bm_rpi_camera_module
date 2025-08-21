@@ -3,14 +3,9 @@ baudrate: 115200
 
 topics:
   rtc: "spotter/utc-time"
-  # add more as you grow:
-  led: "camera/led"      # optional example
-  camera_still: camera/still/capture
-  camera_video: camera/video/capture
   test_pi: test/pi
-
-led:
-  pin: 17                # BCM pin for the example LED handler
+  camera_capture_image: camera/capture/image
+  camera_capture_video: camera/capture/video
 
 clock:
   enabled: true
