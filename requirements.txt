@@ -1,0 +1,8 @@
+board==1.0
+picamera2==0.3.12
+Pillow==8.1.2
+Pillow==11.3.0
+pillow_heif==1.1.0
+pyserial==3.5
+PyYAML==6.0.2
+PyYAML==6.0.2
