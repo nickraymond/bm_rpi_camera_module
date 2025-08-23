@@ -31,9 +31,16 @@ import pillow_heif  # Add HEIC support
 # Register HEIF/HEIC support
 pillow_heif.register_heif_opener()
 
-# Setup the Bristlemouth UART Serial
-bm = BristlemouthSerial()
+# # Setup the Bristlemouth UART Serial
+# bm = BristlemouthSerial()
 
+# Setup the Bristlemouth UART Serial (replaced the above)
+try:
+	from bm_serial import BristlemouthSerial
+	bm = BristlemouthSerial()
+except Exception:
+	bm = None  # running inside bm_agent (UART already in use) or UART unavailable
+	
 # Define the UART buffer size for BM serial coms
 BUFFER_SIZE = 300
 
