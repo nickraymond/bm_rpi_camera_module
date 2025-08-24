@@ -22,9 +22,9 @@ DEDUP_DEFAULT_WINDOW_S = 2.0
 #   - "by_payload": drop only exact repeat of same node/topic/payload
 #   - "by_topic":   drop any repeat of same node/topic regardless of payload (ideal for triggers)
 DEDUP_RULES = {
-	"camera/capture/video": {"window": 8.0, "mode": "by_topic"},
-	"camera/capture/image": {"window": 2.0, "mode": "by_topic"},
-	# leave 'spotter/utc-time' with default so RTC keeps flowing
+	"camera/capture/video": {"window": 8.0, "mode": "by_topic"},  # already working well
+	"camera/capture/image": {"window": 5.0, "mode": "by_topic"},  # NEW: tiny still-image dedupe
+	# leave 'spotter/utc-time' with default (no dedupe) so the RTC flows
 }
 
 _recent = {}                # key -> (last_seen_monotonic, ttl)
