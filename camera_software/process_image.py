@@ -24,6 +24,10 @@ from bm_camera.common.paths import image_dir, buffer_dir
 # except Exception:
 # 	bm = None
 
+# Do not open UART from this module (agent owns it)
+bm = None  # placeholder so guards like `if bm:` are safe
+
+
 # Register HEIF/HEIC support
 pillow_heif.register_heif_opener()
 
@@ -37,7 +41,6 @@ HERE = Path(__file__).resolve().parent
 IMAGE_DIRECTORY = image_dir()
 BUFFER_DIRECTORY = buffer_dir()
 LOG_FILE = str(HERE / "camera_log.csv")
-
 
 # Ensure the directories exist
 os.makedirs(IMAGE_DIRECTORY, exist_ok=True)
@@ -58,15 +61,26 @@ RESOLUTIONS = {
 	"VGA":   (640, 480)
 }
 
-def debug_print(message):
-	"""Helper function to print debug messages if debugging is enabled."""
-	if DEBUG:
-		print(f"[DEBUG] {message}")
-		if bm is not None:
-			try:
-				bm.spotter_log("camera_module.log", message)
-			except Exception:
-				pass
+
+# def debug_print(message):
+# 	"""Helper function to print debug messages if debugging is enabled."""
+# 	if DEBUG:
+# 		print(f"[DEBUG] {message}")
+# 		if bm is not None:
+# 			try:
+# 				bm.spotter_log("camera_module.log", message)
+# 			except Exception:
+# 				pass
+def debug_print(message: str):
+	"""Print locally (and optionally to a file). No UART usage here."""
+	print(f"[DEBUG] {message}")
+	try:
+		# light local log; keep it small and simple
+		with open(os.path.join(BASE_DIR, "camera_debug.log"), "a") as f:
+			f.write(message + "\n")
+	except Exception:
+		pass
+
 
 def validate_resolution(resolution_key):
 	"""Validate the resolution key and return the corresponding resolution."""
