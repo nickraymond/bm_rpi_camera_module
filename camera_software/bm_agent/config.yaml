@@ -13,4 +13,8 @@ clock:
   apply_if_drift_seconds: 1      # only step if |drift| > 2s
   min_apply_interval_seconds: 11  # at most once every 5 min
   
-  
+paths:
+  data_root: "/home/pi/bm_camera/camera_software"   # or "~/.local/share/bm_camera"
+  images: "images"
+  videos: "videos"
+  buffer: "buffer"
