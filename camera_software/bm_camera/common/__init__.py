@@ -1,1 +1,1 @@
-# common utilities for bm_camera
+# makes bm_camera.common a package

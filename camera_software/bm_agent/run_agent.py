@@ -169,6 +169,7 @@ def main():
 			print(f"[WARN] no handler for topic '{topic_str}' (known: {list(dispatch.keys())})")
 
 	bm = open_bus(cfg["uart_device"], cfg["baudrate"])
+	ctx["bm"] = bm
 	subscribe_many(bm, list(dispatch.keys()), cb)
 
 	try:

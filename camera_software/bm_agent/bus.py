@@ -5,6 +5,12 @@ import serial  # needed for SerialException
 
 from bm_serial import BristlemouthSerial
 
+# bm_agent/bus.py
+import bm_serial as _bm_serial
+print(f"[BUS][DEBUG] bm_serial file: {_bm_serial.__file__}")
+print(f"[BUS][DEBUG] has spotter_print: {hasattr(_bm_serial.BristlemouthSerial, 'spotter_print')}")
+
+
 
 def _uart_safety(uart):
 	"""Best-effort flush/reset so we start clean."""

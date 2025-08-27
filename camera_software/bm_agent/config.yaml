@@ -6,6 +6,7 @@ topics:
   test_pi: test/pi
   camera_capture_image: camera/capture/image
   camera_capture_video: camera/capture/video
+  camera_status: camera/status
 
 clock:
   enabled: true
@@ -18,3 +19,35 @@ paths:
   images: "images"
   videos: "videos"
   buffer: "buffer"
+  
+camera:
+  resolutions:
+    12MP:  [4056, 3040]
+    8MP:   [3264, 2448]
+    5MP:   [2592, 1944]
+    4MP:   [2464, 1848]
+    1080p: [1920, 1080]
+    720p:  [1280, 720]
+    480p:  [854, 480]
+    VGA:   [640, 480]
+  
+  # status acks/errors are published here
+  status_topic: "camera/status"
+  
+  defaults:
+    # (optional) values both modes inherit unless overridden below
+    common:
+      res: "720p"
+  
+    image:
+      res: "1080p"
+      burst: 1
+      interval_s: 0.0
+  
+    video:
+      res: "720p"
+      dur_s: 3.0
+      fps: 30
+      bitrate: 3000000
+      hflip: false
+      vflip: false
