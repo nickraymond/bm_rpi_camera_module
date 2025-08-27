@@ -40,14 +40,23 @@ class BristlemouthSerial:
 		BM_SERIAL_NODE_ID_REPLY = 0x61
 		BM_SERIAL_BAUD_RATE_REQ = 0x70
 		BM_SERIAL_BAUD_RATE_REPLY = 0x71
-
-	def __init__(self, uart=None, node_id: int = 0xC0FFEEEEF0CACC1A) -> None:
+	# Added to fix port issue with ttyAMA0 vs serial0 naming
+	def __init__(self, uart=None, node_id: int = 0xC0FFEEEEF0CACC1A,
+				port="/dev/serial0", baudrate=115200, timeout=0.5) -> None:
 		self.node_id = node_id
-		self.sub_cbs = list()
+		self.sub_cbs = []
 		if uart is None:
-			self.uart = serial.Serial(port="/dev/ttyAMA0", baudrate=115200, timeout=0.5)
+			# use provided port/baudrate, don’t hardcode AMA0
+			self.uart = serial.Serial(port=port, baudrate=baudrate, timeout=timeout)
 		else:
 			self.uart = uart
+	# def __init__(self, uart=None, node_id: int = 0xC0FFEEEEF0CACC1A) -> None:
+	# 	self.node_id = node_id
+	# 	self.sub_cbs = list()
+	# 	if uart is None:
+	# 		self.uart = serial.Serial(port="/dev/ttyAMA0", baudrate=115200, timeout=0.5)
+	# 	else:
+	# 		self.uart = uart
 
 	def _read_until_idle(self, timeout: float = 1.0):
 		"""
@@ -145,6 +154,22 @@ class BristlemouthSerial:
 		cobs = self.finalize_packet(packet)
 		return self.lock_uart_and_write_bytes(cobs)
 
+# Matt added Aug 26 to allow printing to Spotter terminal for debug
+	def spotter_print(self, data: str):
+		topic = b"spotter/printf"
+		packet = (
+			self.get_pub_header()
+			+ len(topic).to_bytes(2, "little")
+			+ topic
+			+ b"\x00" * 8
+			+ (0).to_bytes(2, "little")  # Zero filename length
+			+ (len(data) + 1).to_bytes(2, "little")
+			+ data.encode("utf-8")  # Convert data to bytes
+			+ b"\n"
+		)
+		cobs = self.finalize_packet(packet)
+		return self.lock_uart_and_write_bytes(cobs)
+	
 	def lock_uart_and_write_bytes(self, bytes):
 		fcntl.lockf(self.uart, fcntl.LOCK_EX)
 		self.uart.write(bytes)

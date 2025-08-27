@@ -3,13 +3,15 @@ import os
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from bm_camera.common.paths import video_dir
-
 import shutil
-
 from picamera2 import Picamera2
 from picamera2.encoders import H264Encoder
 from picamera2.outputs import FfmpegOutput, FileOutput
+
+from bm_camera.common.paths import video_dir
+from bm_camera.common.config import get_resolutions
+from bm_camera.common.config import resolve_resolution
+
 
 # --- paths ---
 BASE_DIR = Path(__file__).resolve().parent
@@ -17,16 +19,22 @@ BASE_DIR = Path(__file__).resolve().parent
 VIDEO_DIRECTORY = Path(video_dir())  # was previously computed locally
 VIDEO_DIRECTORY.mkdir(parents=True, exist_ok=True)
 
-# --- resolutions map ---
-RESOLUTIONS = {
-    "12MP": (4056, 3040),
-    "8MP":  (3264, 2448),
-    "5MP":  (2592, 1944),
-    "4MP":  (2464, 1848),
-    "1080p": (1920, 1080),
-    "720p":  (1280, 720),
-    "VGA":   (640, 480),
-}
+
+# --- resolutions map (YAML-first, with fallback) ---
+_RES_FROM_YAML = get_resolutions()
+if _RES_FROM_YAML:
+    RESOLUTIONS = _RES_FROM_YAML
+else:
+    # Fallback only for standalone use or missing YAML
+    RESOLUTIONS = {
+        "12MP": (4056, 3040),
+        "8MP":  (3264, 2448),
+        "5MP":  (2592, 1944),
+        "4MP":  (2464, 1848),
+        "1080p": (1920, 1080),
+        "720p":  (1280, 720),
+        "VGA":   (640, 480),
+    }
 
 def _validate_resolution(key):
     if key not in RESOLUTIONS:
@@ -57,7 +65,9 @@ def record_video(duration_s=3.0,
     outdir = Path(directory_path)
     outdir.mkdir(parents=True, exist_ok=True)
 
-    size = _validate_resolution(resolution_key)
+    # size = _validate_resolution(resolution_key)
+    size = resolve_resolution(resolution_key)
+
     ts = _ts()
     ext = ".mp4" if _has_ffmpeg() else ".h264"
     out_path = outdir / f"{base_name}_{ts}{ext}"

@@ -1,5 +1,5 @@
 	
-# filename: process_image.py
+# filename: image_capture.py
 # description: control the quality of image, compression, splitting file into smaller chunks, and filename when saving
 
 import cv2
@@ -13,16 +13,12 @@ from picamera2 import Picamera2
 import subprocess
 from PIL import Image
 import pillow_heif  # Add HEIC support
-
 from pathlib import Path
-from bm_camera.common.paths import image_dir, buffer_dir
 
-# # --- Safe BM serial import (won't crash when UART busy/owned by agent) ---
-# try:
-# 	from bm_serial import BristlemouthSerial
-# 	bm = BristlemouthSerial()
-# except Exception:
-# 	bm = None
+from bm_camera.common.paths import image_dir, buffer_dir
+from bm_camera.common.config import get_resolutions
+from bm_camera.common.config import resolve_resolution, get_camera_defaults
+
 
 # Do not open UART from this module (agent owns it)
 bm = None  # placeholder so guards like `if bm:` are safe
@@ -37,6 +33,15 @@ BUFFER_SIZE = 300
 # Debug flag to control printing of messages to the terminal
 DEBUG = True
 
+# HERE = Path(__file__).resolve().parent
+# IMAGE_DIRECTORY = image_dir()
+# BUFFER_DIRECTORY = buffer_dir()
+# LOG_FILE = str(HERE / "camera_log.csv")
+# 
+# # Ensure the directories exist
+# os.makedirs(IMAGE_DIRECTORY, exist_ok=True)
+# os.makedirs(BUFFER_DIRECTORY, exist_ok=True)
+
 HERE = Path(__file__).resolve().parent
 IMAGE_DIRECTORY = image_dir()
 BUFFER_DIRECTORY = buffer_dir()
@@ -46,47 +51,43 @@ LOG_FILE = str(HERE / "camera_log.csv")
 os.makedirs(IMAGE_DIRECTORY, exist_ok=True)
 os.makedirs(BUFFER_DIRECTORY, exist_ok=True)
 
-# Define the image quality and compression values
-COMPRESSION_QUALITY = 25  # Adjust this value as needed
-RESOLUTION_KEY = "VGA"    # Default resolution
+# # YAML-first resolution map with fallback
+# _RES_FROM_YAML = get_resolutions()
+# if _RES_FROM_YAML:
+# 	RESOLUTIONS = _RES_FROM_YAML
+# else:
+# 	RESOLUTIONS = {
+# 		"12MP": (4056, 3040),
+# 		"8MP":  (3264, 2448),
+# 		"5MP":  (2592, 1944),
+# 		"4MP":  (2464, 1848),
+# 		"1080p": (1920, 1080),
+# 		"720p":  (1280, 720),
+# 		"VGA":   (640, 480),
+# 	}
 
-# Define the available resolution options
-RESOLUTIONS = {
-	"12MP": (4056, 3040),
-	"8MP":  (3264, 2448),
-	"5MP":  (2592, 1944),
-	"4MP":  (2464, 1848),
-	"1080p": (1920, 1080),
-	"720p":  (1280, 720),
-	"VGA":   (640, 480)
-}
-
-
-# def debug_print(message):
-# 	"""Helper function to print debug messages if debugging is enabled."""
-# 	if DEBUG:
-# 		print(f"[DEBUG] {message}")
-# 		if bm is not None:
-# 			try:
-# 				bm.spotter_log("camera_module.log", message)
-# 			except Exception:
-# 				pass
 def debug_print(message: str):
-	"""Print locally (and optionally to a file). No UART usage here."""
 	print(f"[DEBUG] {message}")
 	try:
-		# light local log; keep it small and simple
-		with open(os.path.join(BASE_DIR, "camera_debug.log"), "a") as f:
+		with open(HERE / "camera_debug.log", "a") as f:
 			f.write(message + "\n")
 	except Exception:
 		pass
 
+# Define the image quality and compression values
+COMPRESSION_QUALITY = 25  # Adjust this value as needed
+RESOLUTION_KEY = "VGA"    # Default resolution
+
+
+
+# def validate_resolution(resolution_key):
+# 	"""Validate the resolution key and return the corresponding resolution."""
+# 	if resolution_key not in RESOLUTIONS:
+# 		raise ValueError("Invalid resolution key. Choose from: %s" % ", ".join(RESOLUTIONS.keys()))
+# 	return RESOLUTIONS[resolution_key]
 
 def validate_resolution(resolution_key):
-	"""Validate the resolution key and return the corresponding resolution."""
-	if resolution_key not in RESOLUTIONS:
-		raise ValueError("Invalid resolution key. Choose from: %s" % ", ".join(RESOLUTIONS.keys()))
-	return RESOLUTIONS[resolution_key]
+	return resolve_resolution(resolution_key)
 
 def generate_filename():
 	"""Generate a filename in the format of ISO 8601 timestamp + image.jpg (UTC)."""
