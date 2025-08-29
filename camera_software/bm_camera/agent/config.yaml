@@ -20,6 +20,16 @@ paths:
   videos: "videos"
   buffer: "buffer"
   
+logging:
+  level: INFO             # DEBUG|INFO|WARNING|ERROR
+  dir: "/home/pi/bm_camera/logs"
+  file: "bm_camera.log"
+  rotate_max_bytes: 1048576
+  rotate_backups: 5
+  console: true           # also mirror to stdout
+
+
+
 camera:
   resolutions:
     12MP:  [4056, 3040]

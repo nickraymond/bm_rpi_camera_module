@@ -1,12 +1,10 @@
-# # # filename: bm_camera/camera_software/bm_agent/handlers/capture_video_cmd.py
-
+# # # # filename: bm_camera/camera_software/bm_agent/handlers/capture_video_cmd.py
+import logging
 import os, sys
 from pathlib import Path
-
 from camera_lock import CameraLock
-#from .status_util import ack_print # <<<< obsolete from spotter_log
-from .spotter_log import spotter_log
 
+logger = logging.getLogger("bm_camera.video")
 
 # make camera_software visible on sys.path
 CAMERA_SW_DIR = Path(__file__).resolve().parents[3]
@@ -14,7 +12,9 @@ sp = str(CAMERA_SW_DIR)
 if sp not in sys.path:
     sys.path.insert(0, sp)
 
-from video_capture import save_video  # capture module decides directory
+from video_capture import save_video
+from bm_camera.common.config import get_camera_defaults
+from .status_util import send_status
 
 def _payload_to_str(data: bytes) -> str:
     if not data:
@@ -63,18 +63,15 @@ def cleanup(ctx):
 
 def handle(node_id, topic: str, data: bytes, ctx):
     p = _parse_tokens(_payload_to_str(data))
+    defaults = get_camera_defaults("video")
 
-    cam     = ctx.get("cfg", {}).get("camera", {})
-    vid_def = cam.get("defaults", {}).get("video", {})
+    res   = p.get("res", defaults["res"])
+    dur   = _parse_seconds(p.get("dur", f'{defaults["dur_s"]}s'))
+    fps   = int(p.get("fps", defaults["fps"]))
+    br    = _parse_num_with_units(p.get("br", str(defaults["bitrate"])))
+    hflip = str(p.get("hflip", str(defaults["hflip"]))).lower() in ("1","true","yes")
+    vflip = str(p.get("vflip", str(defaults["vflip"]))).lower() in ("1","true","yes")
 
-    res   = p.get("res",  vid_def.get("res", "720p"))
-    dur   = _parse_seconds(p.get("dur", f'{vid_def.get("dur_s", 3.0)}s'))
-    fps   = int(p.get("fps", vid_def.get("fps", 30)))
-    br    = _parse_num_with_units(p.get("br",  str(vid_def.get("bitrate", 3_000_000))))
-    hflip = str(p.get("hflip", str(vid_def.get("hflip", False)))).lower() in ("1","true","yes")
-    vflip = str(p.get("vflip", str(vid_def.get("vflip", False)))).lower() in ("1","true","yes")
-
-    # lock long enough for the whole clip + margin
     lock_timeout = max(10.0, float(dur) + 5.0)
     try:
         with CameraLock(timeout_s=lock_timeout):
@@ -87,23 +84,16 @@ def handle(node_id, topic: str, data: bytes, ctx):
                 hflip=hflip,
                 vflip=vflip,
             )
-#         size = os.path.getsize(path) if os.path.exists(path) else -1
-#         print(f"[CAM/VID] SAVED {path} ({size} bytes) res={res} dur={dur}s fps={fps} br={br}")
-# 
-#         fn = os.path.basename(path)
-#         ack_print(ctx, f"OK video file={fn} res={res} dur={dur}s fps={fps} br={br} bytes={size}")
         size = os.path.getsize(path) if os.path.exists(path) else -1
-        print(f"[CAM/VID] SAVED {path} ({size} bytes) res={res} dur={dur}s fps={fps} br={br}")
-        
-        # Spotter-friendly line
-        from pathlib import Path as _P
-        spotter_log(ctx,
-                    level="INFO", tag="CAM", msg="video saved",
-                    file=_P(path).name, res=res, dur=dur, fps=fps, br=br, size=size)
-
+        # print(f"[CAM/VID] SAVED {path} ({size} bytes) res={res} dur={dur}s fps={fps} br={br}")
+        logger.info("[CAM/VID] SAVED %s (%d bytes) res=%s dur=%ss fps=%d br=%d",
+        path, size, res, dur, fps, br)
+        send_status(ctx, "OK", op="video", file=os.path.basename(path), res=res, dur=f"{dur}s", fps=fps, br=br, bytes=size)
     except TimeoutError:
-        print("[CAM/VID][BUSY] camera in use; drop trigger")
-        spotter_log(ctx, level="ERR", tag="CAM", msg="video failed", reason="busy")
+        # print("[CAM/VID][BUSY] camera in use; drop trigger")
+        logger.warning("[CAM/VID][BUSY] camera in use; drop trigger")
+        send_status(ctx, "BUSY", op="video")
     except Exception as e:
-        print(f"[CAM/VID][ERR] {e!r}")
-        spotter_log(ctx, level="ERR", tag="CAM", msg="video failed", reason=type(e).__name__)                    
+        # print(f"[CAM/VID][ERR] {e!r}")
+        logger.exception("[CAM/VID][ERR] %r", e)
+        send_status(ctx, "ERR", op="video", reason=type(e).__name__)

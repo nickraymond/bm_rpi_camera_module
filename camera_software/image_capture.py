@@ -33,15 +33,6 @@ BUFFER_SIZE = 300
 # Debug flag to control printing of messages to the terminal
 DEBUG = True
 
-# HERE = Path(__file__).resolve().parent
-# IMAGE_DIRECTORY = image_dir()
-# BUFFER_DIRECTORY = buffer_dir()
-# LOG_FILE = str(HERE / "camera_log.csv")
-# 
-# # Ensure the directories exist
-# os.makedirs(IMAGE_DIRECTORY, exist_ok=True)
-# os.makedirs(BUFFER_DIRECTORY, exist_ok=True)
-
 HERE = Path(__file__).resolve().parent
 IMAGE_DIRECTORY = image_dir()
 BUFFER_DIRECTORY = buffer_dir()
@@ -50,21 +41,6 @@ LOG_FILE = str(HERE / "camera_log.csv")
 # Ensure the directories exist
 os.makedirs(IMAGE_DIRECTORY, exist_ok=True)
 os.makedirs(BUFFER_DIRECTORY, exist_ok=True)
-
-# # YAML-first resolution map with fallback
-# _RES_FROM_YAML = get_resolutions()
-# if _RES_FROM_YAML:
-# 	RESOLUTIONS = _RES_FROM_YAML
-# else:
-# 	RESOLUTIONS = {
-# 		"12MP": (4056, 3040),
-# 		"8MP":  (3264, 2448),
-# 		"5MP":  (2592, 1944),
-# 		"4MP":  (2464, 1848),
-# 		"1080p": (1920, 1080),
-# 		"720p":  (1280, 720),
-# 		"VGA":   (640, 480),
-# 	}
 
 def debug_print(message: str):
 	print(f"[DEBUG] {message}")
@@ -78,14 +54,6 @@ def debug_print(message: str):
 COMPRESSION_QUALITY = 25  # Adjust this value as needed
 RESOLUTION_KEY = "VGA"    # Default resolution
 
-
-
-# def validate_resolution(resolution_key):
-# 	"""Validate the resolution key and return the corresponding resolution."""
-# 	if resolution_key not in RESOLUTIONS:
-# 		raise ValueError("Invalid resolution key. Choose from: %s" % ", ".join(RESOLUTIONS.keys()))
-# 	return RESOLUTIONS[resolution_key]
-
 def validate_resolution(resolution_key):
 	return resolve_resolution(resolution_key)
 
@@ -96,7 +64,8 @@ def generate_filename():
 
 def capture_image(resolution_key="VGA", directory_path=IMAGE_DIRECTORY):
 	"""Capture an image with the specified resolution and save it in the directory."""
-	resolution = validate_resolution(resolution_key)
+	#resolution = validate_resolution(resolution_key)
+	resolution = resolve_resolution(resolution_key)
 	picam2 = Picamera2()
 	try:
 		config = picam2.create_still_configuration(main={"size": resolution, "format": "BGR888"})
