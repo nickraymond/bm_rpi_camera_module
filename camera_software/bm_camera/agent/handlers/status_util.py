@@ -15,24 +15,6 @@ def _status_topic(ctx) -> str:
 	cfg = ctx.get("cfg", {}) if ctx else {}
 	return cfg.get("topics", {}).get("camera_status", "camera/status")
 
-# def send_status(ctx, kind: str, **fields):
-# 	"""
-# 	Send a simple text status line: e.g., "OK op=video file=VID_....mp4 res=720p dur=5 fps=25".
-# 	Falls back to print if publishing isn't available.
-# 	"""
-# 	topic = _status_topic(ctx)
-# 	parts = [kind] + [f"{k}={v}" for k, v in fields.items()]
-# 	payload = " ".join(parts)
-# 
-# 	bm = ctx.get("bm") if ctx else None
-# 	if bm and _pub_text:
-# 		try:
-# 			_pub_text(bm, topic, payload, version=0)   # text, ver=0
-# 			return
-# 		except Exception as e:
-# 			print(f"[STATUS][WARN] publish failed: {e!r}")
-# 	# Fallback to console
-# 	print(f"[STATUS] {topic} :: {payload}")
 def send_status(ctx, kind: str, **fields):
 	"""
 	Send status both to the Spotter terminal (human-readable) and to the status topic.
