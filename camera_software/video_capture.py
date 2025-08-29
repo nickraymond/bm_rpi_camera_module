@@ -22,19 +22,19 @@ VIDEO_DIRECTORY.mkdir(parents=True, exist_ok=True)
 
 # --- resolutions map (YAML-first, with fallback) ---
 _RES_FROM_YAML = get_resolutions()
-if _RES_FROM_YAML:
-    RESOLUTIONS = _RES_FROM_YAML
-else:
-    # Fallback only for standalone use or missing YAML
-    RESOLUTIONS = {
-        "12MP": (4056, 3040),
-        "8MP":  (3264, 2448),
-        "5MP":  (2592, 1944),
-        "4MP":  (2464, 1848),
-        "1080p": (1920, 1080),
-        "720p":  (1280, 720),
-        "VGA":   (640, 480),
-    }
+# if _RES_FROM_YAML:
+#     RESOLUTIONS = _RES_FROM_YAML
+# else:
+#     # Fallback only for standalone use or missing YAML
+#     RESOLUTIONS = {
+#         "12MP": (4056, 3040),
+#         "8MP":  (3264, 2448),
+#         "5MP":  (2592, 1944),
+#         "4MP":  (2464, 1848),
+#         "1080p": (1920, 1080),
+#         "720p":  (1280, 720),
+#         "VGA":   (640, 480),
+#     }
 
 def _validate_resolution(key):
     if key not in RESOLUTIONS:
