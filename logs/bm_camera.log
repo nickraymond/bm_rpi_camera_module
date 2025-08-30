@@ -1,0 +1,1313 @@
+2025-08-28 23:31:38,948 INFO bm_camera.agent: CONFIG using /home/pi/bm_camera/camera_software/bm_camera/agent/config.yaml
+2025-08-28 23:31:38,949 INFO bm_camera.agent: DISPATCH topics=['spotter/utc-time', 'test/pi', 'camera/capture/image', 'camera/capture/video']
+2025-08-28 23:31:38,951 INFO bm_camera.bus: [BUS] open on /dev/serial0
+2025-08-28 23:31:38,952 INFO bm_camera.bus: [SUB] spotter/utc-time
+2025-08-28 23:31:38,953 INFO bm_camera.bus: [SUB] test/pi
+2025-08-28 23:31:38,954 INFO bm_camera.bus: [SUB] camera/capture/image
+2025-08-28 23:31:38,956 INFO bm_camera.bus: [SUB] camera/capture/video
+2025-08-28 23:31:38,957 INFO bm_camera.agent: RUN bm-agent running…
+2025-08-28 23:31:43,449 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:31:52,111 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=0 ver=0 topic='camera/capture/image' len=1
+2025-08-28 23:31:54,053 INFO bm_camera.image: [CAM/IMG] SAVED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T06:31:53Z_image.jpg (342280 bytes) res=1080p burst=1/1
+2025-08-28 23:31:54,266 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:32:02,390 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:32:07,334 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=0 ver=0 topic='camera/capture/video' len=15
+2025-08-28 23:32:13,487 INFO bm_camera.video: [CAM/VID] SAVED /home/pi/bm_camera/camera_software/bm_camera/videos/VID_20250829T063207Z.mp4 (1730951 bytes) res=720p dur=5.0s fps=30 br=3000000
+2025-08-28 23:32:13,726 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:32:22,704 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:32:23,165 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=0 ver=0 topic='camera/capture/image' len=1
+2025-08-28 23:32:24,786 INFO bm_camera.image: [CAM/IMG] SAVED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T06:32:24Z_image.jpg (341439 bytes) res=1080p burst=1/1
+2025-08-28 23:32:30,401 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=0 ver=0 topic='camera/capture/image' len=1
+2025-08-28 23:32:32,046 INFO bm_camera.image: [CAM/IMG] SAVED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T06:32:31Z_image.jpg (348154 bytes) res=1080p burst=1/1
+2025-08-28 23:32:32,640 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:32:42,639 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:32:52,730 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:32:59,491 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=0 ver=0 topic='camera/capture/image' len=1
+2025-08-28 23:33:01,095 INFO bm_camera.image: [CAM/IMG] SAVED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T06:33:00Z_image.jpg (343713 bytes) res=1080p burst=1/1
+2025-08-28 23:33:02,718 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:33:12,751 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:33:22,769 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:33:32,716 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:33:42,693 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:33:52,713 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:34:02,707 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:34:12,714 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:34:22,734 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:34:32,712 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:34:42,680 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:34:52,709 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-28 23:34:58,328 INFO bm_camera.bus: [BUS] closed
+2025-08-28 23:35:02,182 INFO bm_camera.agent: CONFIG using /home/pi/bm_camera/camera_software/bm_camera/agent/config.yaml
+2025-08-28 23:35:02,183 INFO bm_camera.agent: DISPATCH topics=['spotter/utc-time', 'test/pi', 'camera/capture/image', 'camera/capture/video']
+2025-08-28 23:35:02,186 INFO bm_camera.bus: [BUS] open on /dev/serial0
+2025-08-28 23:35:02,187 INFO bm_camera.bus: [SUB] spotter/utc-time
+2025-08-28 23:35:02,188 INFO bm_camera.bus: [SUB] test/pi
+2025-08-28 23:35:02,189 INFO bm_camera.bus: [SUB] camera/capture/image
+2025-08-28 23:35:02,191 INFO bm_camera.bus: [SUB] camera/capture/video
+2025-08-28 23:35:02,192 INFO bm_camera.agent: RUN bm-agent running…
+2025-08-28 23:35:02,294 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:02,709 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=208
+2025-08-28 23:35:03,467 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:04,530 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:05,594 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:06,657 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:07,721 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:08,784 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:09,848 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:10,911 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:11,974 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:12,756 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=208
+2025-08-28 23:35:13,062 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:14,125 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:15,189 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:16,252 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:17,316 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:18,379 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:19,446 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:20,510 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:21,574 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:22,749 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=208
+2025-08-28 23:35:23,016 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:24,076 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:25,136 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:26,195 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:27,254 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:28,315 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:29,379 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:30,442 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:31,505 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:32,568 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:32,722 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=208
+2025-08-28 23:35:33,635 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:34,698 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:35,762 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:36,825 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:37,888 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:38,951 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:40,015 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:40,927 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=0 ver=0 topic='camera/capture/image' len=1
+2025-08-28 23:35:42,846 INFO bm_camera.image: [CAM/IMG] SAVED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T06:35:42Z_image.jpg (342851 bytes) res=1080p burst=1/1
+2025-08-28 23:35:42,908 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:43,060 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=208
+2025-08-28 23:35:43,624 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:44,684 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:45,744 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:46,807 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:47,870 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:48,934 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:50,000 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:51,064 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:52,127 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:52,432 INFO bm_camera.agent: PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=208
+2025-08-28 23:35:53,193 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:54,257 DEBUG bm_camera.bus: [BUS] heartbeat
+2025-08-28 23:35:54,562 INFO bm_camera.bus: [BUS] closed
+2025-08-28 23:34:40,613 INFO bm_camera.agent: CONFIG using /home/pi/bm_camera/camera_software/bm_camera/agent/config.yaml
+2025-08-28 23:34:40,614 INFO bm_camera.agent: DISPATCH topics=['spotter/utc-time', 'test/pi', 'camera/capture/image', 'camera/capture/video']
+2025-08-28 23:34:40,617 INFO bm_camera.bus: [BUS] open on /dev/serial0
+2025-08-28 23:34:40,618 INFO bm_camera.bus: [SUB] spotter/utc-time
+2025-08-28 23:34:40,619 INFO bm_camera.bus: [SUB] test/pi
+2025-08-28 23:34:40,620 INFO bm_camera.bus: [SUB] camera/capture/image
+2025-08-28 23:34:40,622 INFO bm_camera.bus: [SUB] camera/capture/video
+2025-08-28 23:34:40,623 INFO bm_camera.agent: RUN bm-agent running…
+2025-08-28 23:34:46,709 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 10:31:38,349 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 10:31:47,455 INFO bm_camera.bus: [BUS] closed
+2025-08-29 10:33:05,416 INFO bm_camera.agent: CONFIG using /home/pi/bm_camera/camera_software/bm_camera/agent/config.yaml
+2025-08-29 10:33:05,418 INFO bm_camera.agent: DISPATCH topics=['spotter/utc-time', 'test/pi', 'camera/capture/image', 'camera/capture/video']
+2025-08-29 10:33:05,420 INFO bm_camera.bus: [BUS] open on /dev/serial0
+2025-08-29 10:33:05,421 INFO bm_camera.bus: [SUB] spotter/utc-time
+2025-08-29 10:33:05,422 INFO bm_camera.bus: [SUB] test/pi
+2025-08-29 10:33:05,423 INFO bm_camera.bus: [SUB] camera/capture/image
+2025-08-29 10:33:05,424 INFO bm_camera.bus: [SUB] camera/capture/video
+2025-08-29 10:33:05,426 INFO bm_camera.agent: RUN bm-agent running…
+2025-08-29 10:33:08,331 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:33:18,422 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:33:22,897 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=1
+2025-08-29 10:33:24,831 INFO bm_camera.image: [CAM/IMG] SAVED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T17:33:24Z_image.jpg (492280 bytes) res=1080p burst=1/1
+2025-08-29 10:33:28,415 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:33:36,367 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/video' len=16
+2025-08-29 10:34:07,717 INFO bm_camera.video: [CAM/VID] SAVED /home/pi/bm_camera/camera_software/bm_camera/videos/VID_20250829T173336Z.mp4 (10239979 bytes) res=720p dur=30.0s fps=30 br=3000000
+2025-08-29 10:34:07,962 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=208
+2025-08-29 10:34:08,702 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:34:18,266 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:34:28,232 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:34:38,758 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:34:48,782 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:34:58,713 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:35:08,675 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:35:18,714 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:35:28,693 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:35:38,737 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:35:48,763 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:35:58,718 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:36:08,673 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:36:18,720 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:36:28,746 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:36:38,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:36:48,681 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:36:58,721 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:37:08,741 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:37:18,711 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:37:28,691 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:37:38,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:37:48,688 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:37:58,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:38:08,678 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:38:18,711 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:38:28,697 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:38:38,721 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:38:48,746 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:38:58,720 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:39:08,690 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:39:18,711 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:39:28,735 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:39:38,710 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:39:48,675 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:39:58,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:40:08,736 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:40:18,711 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:40:28,695 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:40:38,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:40:48,710 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:40:58,712 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:41:08,734 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:41:18,717 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:41:28,686 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:41:38,713 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:41:48,730 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:41:58,668 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:42:08,693 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:42:18,680 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:42:28,704 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:42:38,720 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:42:48,702 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:42:58,714 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:43:08,735 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:43:18,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:43:28,674 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:43:38,738 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:43:48,721 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:43:58,721 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:44:08,739 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:44:18,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:44:28,681 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:44:38,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:44:48,687 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:44:58,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:45:08,739 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:45:18,720 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:45:28,684 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:45:38,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:45:48,736 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:45:58,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:46:08,690 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:46:18,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:46:28,700 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:46:38,714 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:46:48,734 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:46:58,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:47:08,692 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:47:18,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:47:28,707 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:47:38,714 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:47:48,736 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:47:58,712 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:48:08,688 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:48:18,681 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:48:28,701 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:48:38,712 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:48:48,682 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:48:58,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:49:08,742 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:49:18,721 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:49:28,686 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:49:38,713 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:49:48,690 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:49:58,722 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:50:08,747 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:50:18,717 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:50:28,686 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:50:38,714 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:50:48,686 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:50:58,722 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:51:08,751 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:51:18,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:51:28,685 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:51:38,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:51:48,693 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:51:58,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:52:08,721 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:52:18,714 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:52:28,703 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:52:38,714 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:52:48,738 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:52:58,709 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:53:08,728 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:53:18,679 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:53:28,708 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:53:38,678 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:53:48,706 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:53:58,713 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:54:08,685 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:54:18,717 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:54:28,739 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:54:38,651 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:54:48,676 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:54:58,717 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:55:08,687 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:55:18,749 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 10:55:25,430 INFO bm_camera.bus: [BUS] closed
+2025-08-29 13:25:46,957 INFO bm_camera.agent: CONFIG using /home/pi/bm_camera/camera_software/bm_camera/agent/config.yaml
+2025-08-29 13:25:46,960 INFO bm_camera.agent: DISPATCH topics=['spotter/utc-time', 'test/pi', 'camera/capture/image', 'camera/capture/video']
+2025-08-29 13:25:46,962 INFO bm_camera.bus: [BUS] open on /dev/serial0
+2025-08-29 13:25:46,963 INFO bm_camera.bus: [SUB] subscribing to 'spotter/utc-time'
+2025-08-29 13:25:46,964 INFO bm_camera.bus: [SUB] subscribing to 'test/pi'
+2025-08-29 13:25:46,966 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/image'
+2025-08-29 13:25:46,967 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/video'
+2025-08-29 13:25:46,968 INFO bm_camera.agent: RUN bm-agent running…
+2025-08-29 13:25:56,726 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:26:06,360 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:26:11,700 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/video' len=16
+2025-08-29 13:26:42,894 INFO bm_camera.video: [CAM/VID] SAVED /home/pi/bm_camera/camera_software/bm_camera/videos/VID_20250829T202611Z.mp4 (10887980 bytes) res=720p dur=30.0s fps=30 br=3000000
+2025-08-29 13:26:43,132 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=365
+2025-08-29 13:26:46,343 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:26:49,140 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=1
+2025-08-29 13:26:51,048 INFO bm_camera.image: [CAM/IMG] SAVED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T20:26:50Z_image.jpg (366742 bytes) res=1080p burst=1/1
+2025-08-29 13:26:56,414 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:27:06,401 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:27:16,692 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:27:26,718 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:27:36,720 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:27:46,686 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:27:56,687 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:27:58,767 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=1
+2025-08-29 13:28:00,540 INFO bm_camera.image: [CAM/IMG] SAVED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T20:27:59Z_image.jpg (364877 bytes) res=1080p burst=1/1
+2025-08-29 13:28:06,683 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:28:16,720 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:28:26,728 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:28:36,679 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:28:46,706 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:28:56,678 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:29:06,701 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:29:16,718 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 13:29:26,683 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 14:11:56,047 INFO bm_camera.agent: CONFIG using /home/pi/bm_camera/camera_software/bm_camera/agent/config.yaml
+2025-08-29 14:11:56,049 INFO bm_camera.agent: DISPATCH topics=['spotter/utc-time', 'test/pi', 'camera/capture/image', 'camera/capture/video']
+2025-08-29 14:11:56,052 INFO bm_camera.bus: [BUS] open on /dev/serial0
+2025-08-29 14:11:56,053 INFO bm_camera.bus: [SUB] subscribing to 'spotter/utc-time'
+2025-08-29 14:11:56,055 INFO bm_camera.bus: [SUB] subscribing to 'test/pi'
+2025-08-29 14:11:56,057 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/image'
+2025-08-29 14:11:56,058 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/video'
+2025-08-29 14:11:56,060 INFO bm_camera.agent: RUN bm-agent running…
+2025-08-29 14:12:06,124 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:12:16,409 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:12:26,431 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:12:31,614 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:12:33,226 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:12:32Z_image.jpg (370162 bytes) res=1080p burst=1/1
+2025-08-29 14:12:38,225 INFO bm_camera.image: [ENC] 2025-08-29T21:12:32Z_image.jpg -> 2025-08-29T21:12:32Z_image-c.heic (30089 bytes) fmt=heif q=25
+2025-08-29 14:12:38,228 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:12:38,297 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:12:40,082 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:12:39Z_image.jpg (369758 bytes) res=1080p burst=1/1
+2025-08-29 14:12:44,691 INFO bm_camera.image: [ENC] 2025-08-29T21:12:39Z_image.jpg -> 2025-08-29T21:12:39Z_image-c.heic (30041 bytes) fmt=heif q=25
+2025-08-29 14:12:44,693 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:12:44,762 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:12:46,280 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:12:45Z_image.jpg (369371 bytes) res=1080p burst=1/1
+2025-08-29 14:12:50,566 INFO bm_camera.image: [ENC] 2025-08-29T21:12:45Z_image.jpg -> 2025-08-29T21:12:45Z_image-c.heic (30159 bytes) fmt=heif q=25
+2025-08-29 14:12:50,568 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:12:50,636 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:12:52,127 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:12:51Z_image.jpg (369750 bytes) res=1080p burst=1/1
+2025-08-29 14:12:56,519 INFO bm_camera.image: [ENC] 2025-08-29T21:12:51Z_image.jpg -> 2025-08-29T21:12:51Z_image-c.heic (30282 bytes) fmt=heif q=25
+2025-08-29 14:12:56,520 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:12:56,739 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=448
+2025-08-29 14:13:06,681 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:13:15,866 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:13:25,890 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:13:36,658 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:13:46,654 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:13:56,674 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:14:06,697 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:14:16,668 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:14:26,668 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:14:36,678 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-08-29 14:14:40,399 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 14:14:41,767 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:14:41Z_image.jpg (79443 bytes) res=VGA burst=1/1
+2025-08-29 14:14:42,837 INFO bm_camera.image: [ENC] 2025-08-29T21:14:41Z_image.jpg -> 2025-08-29T21:14:41Z_image-c.heic (9618 bytes) fmt=heif q=25
+2025-08-29 14:18:23,539 INFO bm_camera.image: [TX] sent via Spotter: 2025-08-29T21:14:41Z_image-c.heic (43 chunks)
+2025-08-29 14:18:23,636 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 14:18:25,203 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:18:24Z_image.jpg (79849 bytes) res=VGA burst=1/1
+2025-08-29 14:18:26,292 INFO bm_camera.image: [ENC] 2025-08-29T21:18:24Z_image.jpg -> 2025-08-29T21:18:24Z_image-c.heic (9690 bytes) fmt=heif q=25
+2025-08-29 14:22:12,014 INFO bm_camera.image: [TX] sent via Spotter: 2025-08-29T21:18:24Z_image-c.heic (44 chunks)
+2025-08-29 14:22:12,116 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 14:22:13,446 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:22:13Z_image.jpg (78744 bytes) res=VGA burst=1/1
+2025-08-29 14:22:14,509 INFO bm_camera.image: [ENC] 2025-08-29T21:22:13Z_image.jpg -> 2025-08-29T21:22:13Z_image-c.heic (9595 bytes) fmt=heif q=25
+2025-08-29 14:25:55,225 INFO bm_camera.image: [TX] sent via Spotter: 2025-08-29T21:22:13Z_image-c.heic (43 chunks)
+2025-08-29 14:25:55,325 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 14:25:56,621 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:25:56Z_image.jpg (78698 bytes) res=VGA burst=1/1
+2025-08-29 14:25:57,675 INFO bm_camera.image: [ENC] 2025-08-29T21:25:56Z_image.jpg -> 2025-08-29T21:25:56Z_image-c.heic (9601 bytes) fmt=heif q=25
+2025-08-29 14:27:48,742 INFO bm_camera.agent: CONFIG using /home/pi/bm_camera/camera_software/bm_camera/agent/config.yaml
+2025-08-29 14:27:48,752 INFO bm_camera.agent: DISPATCH topics=['spotter/utc-time', 'test/pi', 'camera/capture/image', 'camera/capture/video']
+2025-08-29 14:27:48,754 INFO bm_camera.bus: [BUS] open on /dev/serial0
+2025-08-29 14:27:48,755 INFO bm_camera.bus: [SUB] subscribing to 'spotter/utc-time'
+2025-08-29 14:27:48,757 INFO bm_camera.bus: [SUB] subscribing to 'test/pi'
+2025-08-29 14:27:48,759 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/image'
+2025-08-29 14:27:48,760 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/video'
+2025-08-29 14:27:48,762 INFO bm_camera.agent: RUN bm-agent running…
+2025-08-29 14:27:54,661 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:27:56,523 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:27:55Z_image.jpg (370564 bytes) res=1080p burst=1/1
+2025-08-29 14:28:04,077 INFO bm_camera.image: [ENC] 2025-08-29T21:27:55Z_image.jpg -> 2025-08-29T21:27:55Z_image-c.heic (30674 bytes) fmt=heif q=25
+2025-08-29 14:28:04,079 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:28:04,166 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:28:06,058 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:28:05Z_image.jpg (371985 bytes) res=1080p burst=1/1
+2025-08-29 14:28:10,685 INFO bm_camera.image: [ENC] 2025-08-29T21:28:05Z_image.jpg -> 2025-08-29T21:28:05Z_image-c.heic (30844 bytes) fmt=heif q=25
+2025-08-29 14:28:10,686 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:28:10,770 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:28:12,507 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:28:12Z_image.jpg (371834 bytes) res=1080p burst=1/1
+2025-08-29 14:28:16,932 INFO bm_camera.image: [ENC] 2025-08-29T21:28:12Z_image.jpg -> 2025-08-29T21:28:12Z_image-c.heic (30387 bytes) fmt=heif q=25
+2025-08-29 14:28:16,932 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:28:16,999 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:28:18,713 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:28:18Z_image.jpg (371954 bytes) res=1080p burst=1/1
+2025-08-29 14:28:23,218 INFO bm_camera.image: [ENC] 2025-08-29T21:28:18Z_image.jpg -> 2025-08-29T21:28:18Z_image-c.heic (30616 bytes) fmt=heif q=25
+2025-08-29 14:28:23,219 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:28:23,477 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=568
+2025-08-29 14:28:26,524 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:28:51,427 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:28:51,622 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=813
+2025-08-29 14:28:56,334 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=213
+2025-08-29 14:29:06,276 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:29:12,161 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:29:14,671 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:29:13Z_image.jpg (364554 bytes) res=1080p burst=1/1
+2025-08-29 14:29:19,417 INFO bm_camera.image: [ENC] 2025-08-29T21:29:13Z_image.jpg -> 2025-08-29T21:29:13Z_image-c.heic (29924 bytes) fmt=heif q=25
+2025-08-29 14:29:19,417 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:29:19,487 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:29:21,271 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:29:20Z_image.jpg (364909 bytes) res=1080p burst=1/1
+2025-08-29 14:29:25,760 INFO bm_camera.image: [ENC] 2025-08-29T21:29:20Z_image.jpg -> 2025-08-29T21:29:20Z_image-c.heic (29852 bytes) fmt=heif q=25
+2025-08-29 14:29:25,761 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:29:25,829 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:29:27,305 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:29:26Z_image.jpg (366001 bytes) res=1080p burst=1/1
+2025-08-29 14:29:31,666 INFO bm_camera.image: [ENC] 2025-08-29T21:29:26Z_image.jpg -> 2025-08-29T21:29:26Z_image-c.heic (29874 bytes) fmt=heif q=25
+2025-08-29 14:29:31,667 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:29:31,736 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:29:33,209 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:29:32Z_image.jpg (365081 bytes) res=1080p burst=1/1
+2025-08-29 14:29:37,631 INFO bm_camera.image: [ENC] 2025-08-29T21:29:32Z_image.jpg -> 2025-08-29T21:29:32Z_image-c.heic (29898 bytes) fmt=heif q=25
+2025-08-29 14:29:37,632 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:29:37,852 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=568
+2025-08-29 14:29:38,030 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=568
+2025-08-29 14:29:43,086 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:29:53,035 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:30:17,704 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:30:24,961 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:30:34,980 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:30:37,816 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:30:44,922 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:30:54,947 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:30:57,758 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:31:05,176 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:31:15,201 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:31:17,733 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:31:24,911 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:31:34,937 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:31:37,713 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:31:44,689 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:31:54,709 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:31:57,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:32:04,791 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:32:14,787 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:32:16,790 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:32:24,077 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:32:34,066 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:32:36,763 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:32:44,159 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:32:54,154 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:32:56,732 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:33:03,655 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:33:13,652 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:33:16,734 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:33:23,842 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:33:26,632 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:33:29,512 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:33:28Z_image.jpg (369213 bytes) res=1080p burst=1/1
+2025-08-29 14:33:34,186 INFO bm_camera.image: [ENC] 2025-08-29T21:33:28Z_image.jpg -> 2025-08-29T21:33:28Z_image-c.heic (30137 bytes) fmt=heif q=25
+2025-08-29 14:33:34,187 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:33:34,255 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:33:35,855 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:33:35Z_image.jpg (367672 bytes) res=1080p burst=1/1
+2025-08-29 14:33:40,375 INFO bm_camera.image: [ENC] 2025-08-29T21:33:35Z_image.jpg -> 2025-08-29T21:33:35Z_image-c.heic (30021 bytes) fmt=heif q=25
+2025-08-29 14:33:40,376 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:33:40,443 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:33:42,016 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:33:41Z_image.jpg (367845 bytes) res=1080p burst=1/1
+2025-08-29 14:33:46,533 INFO bm_camera.image: [ENC] 2025-08-29T21:33:41Z_image.jpg -> 2025-08-29T21:33:41Z_image-c.heic (30246 bytes) fmt=heif q=25
+2025-08-29 14:33:46,545 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:33:46,634 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:33:48,502 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:33:47Z_image.jpg (368898 bytes) res=1080p burst=1/1
+2025-08-29 14:33:53,025 INFO bm_camera.image: [ENC] 2025-08-29T21:33:47Z_image.jpg -> 2025-08-29T21:33:47Z_image-c.heic (29969 bytes) fmt=heif q=25
+2025-08-29 14:33:53,026 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:33:53,397 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=368
+2025-08-29 14:33:53,833 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:33:57,710 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:34:01,185 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:34:11,144 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:34:21,141 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:34:27,121 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:34:32,823 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:34:42,809 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:34:47,410 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:34:52,666 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:35:02,654 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:35:07,202 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:35:12,656 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:35:22,651 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:35:27,167 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:35:32,879 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:35:42,863 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:35:47,152 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:35:52,717 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:36:02,731 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:36:07,211 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:36:12,662 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:36:22,646 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:36:27,149 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:36:32,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:36:42,707 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:36:47,197 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:36:52,769 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:37:02,789 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:37:07,171 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:37:12,586 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:37:22,544 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:37:27,059 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:37:32,601 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:37:42,587 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:37:47,150 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:37:52,382 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:38:02,340 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:38:07,080 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:38:12,848 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:38:22,893 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:38:27,123 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:38:32,538 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:38:42,509 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:38:47,074 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:38:52,963 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:39:02,877 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:39:07,104 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:39:12,483 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:39:22,471 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:39:27,679 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:39:28,962 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:39:32,040 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:39:31Z_image.jpg (365005 bytes) res=1080p burst=1/1
+2025-08-29 14:39:36,707 INFO bm_camera.image: [ENC] 2025-08-29T21:39:31Z_image.jpg -> 2025-08-29T21:39:31Z_image-c.heic (29753 bytes) fmt=heif q=25
+2025-08-29 14:39:36,708 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:39:36,779 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:39:38,851 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:39:38Z_image.jpg (365150 bytes) res=1080p burst=1/1
+2025-08-29 14:39:43,392 INFO bm_camera.image: [ENC] 2025-08-29T21:39:38Z_image.jpg -> 2025-08-29T21:39:38Z_image-c.heic (29824 bytes) fmt=heif q=25
+2025-08-29 14:39:43,393 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:39:43,463 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:39:45,154 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:39:44Z_image.jpg (364963 bytes) res=1080p burst=1/1
+2025-08-29 14:39:49,495 INFO bm_camera.image: [ENC] 2025-08-29T21:39:44Z_image.jpg -> 2025-08-29T21:39:44Z_image-c.heic (29946 bytes) fmt=heif q=25
+2025-08-29 14:39:49,496 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:39:49,566 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:39:51,236 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:39:50Z_image.jpg (364431 bytes) res=1080p burst=1/1
+2025-08-29 14:39:55,598 INFO bm_camera.image: [ENC] 2025-08-29T21:39:50Z_image.jpg -> 2025-08-29T21:39:50Z_image-c.heic (29905 bytes) fmt=heif q=25
+2025-08-29 14:39:55,599 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:39:55,822 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=568
+2025-08-29 14:40:01,038 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:40:06,470 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:40:13,285 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:40:23,307 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:40:26,653 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:40:34,535 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:40:44,531 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:40:54,726 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:41:04,714 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:41:14,718 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:41:24,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:41:26,672 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:41:34,517 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:41:44,527 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:41:46,685 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:41:54,543 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:42:04,540 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:42:06,717 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:42:14,492 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:42:24,485 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:42:26,661 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:42:34,600 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:42:44,573 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:42:54,663 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:43:04,659 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:43:14,637 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:43:24,629 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:43:34,680 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:43:44,668 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:43:54,632 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:44:04,624 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:44:06,694 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:44:14,362 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=168
+2025-08-29 14:44:29,325 INFO bm_camera.agent: CONFIG loaded
+2025-08-29 14:44:29,327 INFO bm_camera.agent: DISPATCH topics=['camera/capture/image', 'camera/capture/video', 'spotter/utc-time', 'test/pi']
+2025-08-29 14:44:29,329 INFO bm_camera.bus: [BUS] open on /dev/serial0
+2025-08-29 14:44:29,330 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/image'
+2025-08-29 14:44:29,331 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/video'
+2025-08-29 14:44:29,333 INFO bm_camera.bus: [SUB] subscribing to 'spotter/utc-time'
+2025-08-29 14:44:29,334 INFO bm_camera.bus: [SUB] subscribing to 'test/pi'
+2025-08-29 14:44:29,335 INFO bm_camera.agent: RUN bm-agent running…
+2025-08-29 14:44:34,363 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=208
+2025-08-29 14:44:38,149 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:44:39,813 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:44:39Z_image.jpg (364536 bytes) res=1080p burst=1/1
+2025-08-29 14:44:44,557 INFO bm_camera.image: [ENC] 2025-08-29T21:44:39Z_image.jpg -> 2025-08-29T21:44:39Z_image-c.heic (29746 bytes) fmt=heif q=25
+2025-08-29 14:44:44,558 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:44:44,631 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:44:46,366 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:44:45Z_image.jpg (365700 bytes) res=1080p burst=1/1
+2025-08-29 14:44:50,815 INFO bm_camera.image: [ENC] 2025-08-29T21:44:45Z_image.jpg -> 2025-08-29T21:44:45Z_image-c.heic (29975 bytes) fmt=heif q=25
+2025-08-29 14:44:50,816 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:44:50,889 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:24:35,909 INFO bm_camera.agent: CONFIG loaded
+2025-08-29 14:24:35,911 INFO bm_camera.agent: DISPATCH topics=['camera/capture/image', 'camera/capture/video', 'spotter/utc-time', 'test/pi']
+2025-08-29 14:24:35,914 INFO bm_camera.bus: [BUS] open on /dev/serial0
+2025-08-29 14:24:35,915 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/image'
+2025-08-29 14:24:35,916 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/video'
+2025-08-29 14:24:35,917 INFO bm_camera.bus: [SUB] subscribing to 'spotter/utc-time'
+2025-08-29 14:24:35,919 INFO bm_camera.bus: [SUB] subscribing to 'test/pi'
+2025-08-29 14:24:35,920 INFO bm_camera.agent: RUN bm-agent running…
+2025-08-29 14:24:36,022 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:24:38,052 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 14:58:11,437 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:58:16,440 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:58:18,360 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 14:58:21,550 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:58:23,910 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:58:25,799 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:58:25Z_image.jpg (367652 bytes) res=1080p burst=1/1
+2025-08-29 14:58:25,825 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 14:58:25,826 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 14:58:25,827 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 14:58:25,828 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 14:58:25\x00'
+2025-08-29 14:58:25,829 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 14:58:30,517 INFO bm_camera.image: [ENC] 2025-08-29T21:58:25Z_image.jpg -> 2025-08-29T21:58:25Z_image-c.heic (30047 bytes) fmt=heif q=25
+2025-08-29 14:58:30,518 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:58:30,585 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:58:30,738 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 14:58:33,715 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:58:36,348 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 14:58:38,781 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:58:43,789 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:58:46,371 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 14:58:51,285 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:58:56,286 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:58:58,717 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 14:59:01,300 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:59:06,317 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:59:08,296 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 14:59:09,934 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:59:09Z_image.jpg (363980 bytes) res=1080p burst=1/1
+2025-08-29 14:59:09,938 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 14:59:09,938 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 14:59:09,939 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 14:59:09,940 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 14:59:09\x00'
+2025-08-29 14:59:09,941 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 14:59:14,400 INFO bm_camera.image: [ENC] 2025-08-29T21:59:09Z_image.jpg -> 2025-08-29T21:59:09Z_image-c.heic (29501 bytes) fmt=heif q=25
+2025-08-29 14:59:14,401 INFO bm_camera.image: [TX] skipped (send flag false)
+2025-08-29 14:59:14,470 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:59:14,623 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 14:59:12,805 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 14:59:13,567 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:59:18,579 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:59:22,771 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 14:59:23,684 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:59:28,696 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:59:32,797 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=8
+2025-08-29 14:59:39,622 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 14:59:42,297 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 14:59:43,906 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T21:59:43Z_image.jpg (76587 bytes) res=VGA burst=1/1
+2025-08-29 14:59:43,916 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 14:59:43,919 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 14:59:43,920 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 14:59:43,922 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 14:59:43\x00'
+2025-08-29 14:59:43,924 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 14:59:45,026 INFO bm_camera.image: [ENC] 2025-08-29T21:59:43Z_image.jpg -> 2025-08-29T21:59:43Z_image-c.heic (9321 bytes) fmt=heif q=25
+2025-08-29 15:03:20,725 INFO bm_camera.image: [TX] sent via Spotter: 2025-08-29T21:59:43Z_image-c.heic (42 chunks)
+2025-08-29 15:03:20,822 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 15:03:22,196 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T22:03:21Z_image.jpg (76866 bytes) res=VGA burst=1/1
+2025-08-29 15:03:22,198 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 15:03:22,199 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 15:03:22,200 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 15:03:22,200 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 15:03:21\x00'
+2025-08-29 15:03:22,201 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 15:03:23,204 INFO bm_camera.image: [ENC] 2025-08-29T22:03:21Z_image.jpg -> 2025-08-29T22:03:21Z_image-c.heic (9387 bytes) fmt=heif q=25
+2025-08-29 15:06:58,898 INFO bm_camera.image: [TX] sent via Spotter: 2025-08-29T22:03:21Z_image-c.heic (42 chunks)
+2025-08-29 15:06:59,008 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 15:07:00,513 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T22:06:59Z_image.jpg (77887 bytes) res=VGA burst=1/1
+2025-08-29 15:07:00,516 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 15:07:00,516 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 15:07:00,517 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 15:07:00,518 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 15:07:00\x00'
+2025-08-29 15:07:00,519 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 15:07:01,510 INFO bm_camera.image: [ENC] 2025-08-29T22:06:59Z_image.jpg -> 2025-08-29T22:06:59Z_image-c.heic (9496 bytes) fmt=heif q=25
+2025-08-29 15:10:42,218 INFO bm_camera.image: [TX] sent via Spotter: 2025-08-29T22:06:59Z_image-c.heic (43 chunks)
+2025-08-29 15:10:42,312 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 15:10:43,643 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T22:10:43Z_image.jpg (76639 bytes) res=VGA burst=1/1
+2025-08-29 15:10:43,645 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 15:10:43,646 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 15:10:43,647 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 15:10:43,648 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 15:10:43\x00'
+2025-08-29 15:10:43,649 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 15:10:44,667 INFO bm_camera.image: [ENC] 2025-08-29T22:10:43Z_image.jpg -> 2025-08-29T22:10:43Z_image-c.heic (9279 bytes) fmt=heif q=25
+2025-08-29 15:11:31,393 INFO bm_camera.agent: CONFIG loaded
+2025-08-29 15:11:31,395 INFO bm_camera.agent: DISPATCH topics=['camera/capture/image', 'camera/capture/video', 'spotter/utc-time', 'test/pi']
+2025-08-29 15:11:31,398 INFO bm_camera.bus: [BUS] open on /dev/serial0
+2025-08-29 15:11:31,399 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/image'
+2025-08-29 15:11:31,400 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/video'
+2025-08-29 15:11:31,401 INFO bm_camera.bus: [SUB] subscribing to 'spotter/utc-time'
+2025-08-29 15:11:31,403 INFO bm_camera.bus: [SUB] subscribing to 'test/pi'
+2025-08-29 15:11:31,404 INFO bm_camera.agent: RUN bm-agent running…
+2025-08-29 15:11:31,506 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:11:36,657 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:11:38,491 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:11:41,286 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:11:45,591 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 15:11:47,316 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T22:11:46Z_image.jpg (76608 bytes) res=VGA burst=1/1
+2025-08-29 15:11:47,344 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 15:11:47,344 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 15:11:47,345 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 15:11:47,346 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 15:11:46\x00'
+2025-08-29 15:11:47,347 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 15:11:48,689 INFO bm_camera.image: [ENC] 2025-08-29T22:11:46Z_image.jpg -> 2025-08-29T22:11:46Z_image-c.heic (9269 bytes) fmt=heif q=25
+2025-08-29 15:11:48,692 DEBUG bm_camera.tx.spotter: [CHUNK] file=2025-08-29T22:11:46Z_image-c.heic bytes=9269 b64_len=12360 chunk_size=300 chunks=42
+2025-08-29 15:11:48,936 DEBUG bm_camera.tx.spotter: [CHUNK] mirrored 42 chunks to /home/pi/bm_camera/camera_software/buffer
+2025-08-29 15:11:48,938 DEBUG bm_camera.tx.spotter: [TX] start file=2025-08-29T22:11:46Z_image-c.heic total_chunks=42
+2025-08-29 15:15:19,602 DEBUG bm_camera.tx.spotter: [TX] end file=2025-08-29T22:11:46Z_image-c.heic sent=42
+2025-08-29 15:15:19,605 INFO bm_camera.image: [TX] sent via Spotter: 2025-08-29T22:11:46Z_image-c.heic (42 chunks)
+2025-08-29 15:15:19,707 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 15:15:21,042 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T22:15:20Z_image.jpg (77493 bytes) res=VGA burst=1/1
+2025-08-29 15:15:21,045 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 15:15:21,046 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 15:15:21,048 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 15:15:21,048 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 15:15:20\x00'
+2025-08-29 15:15:21,049 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 15:15:22,128 INFO bm_camera.image: [ENC] 2025-08-29T22:15:20Z_image.jpg -> 2025-08-29T22:15:20Z_image-c.heic (9582 bytes) fmt=heif q=25
+2025-08-29 15:15:22,130 DEBUG bm_camera.tx.spotter: [CHUNK] file=2025-08-29T22:15:20Z_image-c.heic bytes=9582 b64_len=12776 chunk_size=300 chunks=43
+2025-08-29 15:15:22,160 DEBUG bm_camera.tx.spotter: [CHUNK] mirrored 43 chunks to /home/pi/bm_camera/camera_software/buffer
+2025-08-29 15:15:22,162 DEBUG bm_camera.tx.spotter: [TX] start file=2025-08-29T22:15:20Z_image-c.heic total_chunks=43
+2025-08-29 15:18:57,835 DEBUG bm_camera.tx.spotter: [TX] end file=2025-08-29T22:15:20Z_image-c.heic sent=43
+2025-08-29 15:18:57,839 INFO bm_camera.image: [TX] sent via Spotter: 2025-08-29T22:15:20Z_image-c.heic (43 chunks)
+2025-08-29 15:18:57,939 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 15:18:59,280 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T22:18:58Z_image.jpg (77597 bytes) res=VGA burst=1/1
+2025-08-29 15:18:59,282 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 15:18:59,283 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 15:18:59,284 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 15:18:59,285 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 15:18:58\x00'
+2025-08-29 15:18:59,285 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 15:19:00,314 INFO bm_camera.image: [ENC] 2025-08-29T22:18:58Z_image.jpg -> 2025-08-29T22:18:58Z_image-c.heic (9433 bytes) fmt=heif q=25
+2025-08-29 15:19:00,316 DEBUG bm_camera.tx.spotter: [CHUNK] file=2025-08-29T22:18:58Z_image-c.heic bytes=9433 b64_len=12580 chunk_size=300 chunks=42
+2025-08-29 15:19:00,344 DEBUG bm_camera.tx.spotter: [CHUNK] mirrored 42 chunks to /home/pi/bm_camera/camera_software/buffer
+2025-08-29 15:19:00,346 DEBUG bm_camera.tx.spotter: [TX] start file=2025-08-29T22:18:58Z_image-c.heic total_chunks=42
+2025-08-29 15:22:31,013 DEBUG bm_camera.tx.spotter: [TX] end file=2025-08-29T22:18:58Z_image-c.heic sent=42
+2025-08-29 15:22:31,016 INFO bm_camera.image: [TX] sent via Spotter: 2025-08-29T22:18:58Z_image-c.heic (42 chunks)
+2025-08-29 15:22:31,116 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=14
+2025-08-29 15:22:32,443 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T22:22:32Z_image.jpg (76617 bytes) res=VGA burst=1/1
+2025-08-29 15:22:32,445 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 15:22:32,446 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 15:22:32,447 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 15:22:32,448 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 15:22:32\x00'
+2025-08-29 15:22:32,449 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 15:22:33,491 INFO bm_camera.image: [ENC] 2025-08-29T22:22:32Z_image.jpg -> 2025-08-29T22:22:32Z_image-c.heic (9339 bytes) fmt=heif q=25
+2025-08-29 15:22:33,493 DEBUG bm_camera.tx.spotter: [CHUNK] file=2025-08-29T22:22:32Z_image-c.heic bytes=9339 b64_len=12452 chunk_size=300 chunks=42
+2025-08-29 15:22:33,522 DEBUG bm_camera.tx.spotter: [CHUNK] mirrored 42 chunks to /home/pi/bm_camera/camera_software/buffer
+2025-08-29 15:22:33,524 DEBUG bm_camera.tx.spotter: [TX] start file=2025-08-29T22:22:32Z_image-c.heic total_chunks=42
+2025-08-29 15:26:04,182 DEBUG bm_camera.tx.spotter: [TX] end file=2025-08-29T22:22:32Z_image-c.heic sent=42
+2025-08-29 15:26:04,185 INFO bm_camera.image: [TX] sent via Spotter: 2025-08-29T22:22:32Z_image-c.heic (42 chunks)
+2025-08-29 15:26:04,286 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:26:04,439 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=6848
+2025-08-29 15:26:07,860 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:26:09,772 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:26:14,781 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:26:18,273 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:26:19,792 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:26:24,807 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:26:28,239 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:26:30,377 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:26:35,527 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:26:38,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:26:40,544 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:26:45,554 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:26:48,673 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:26:50,681 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:26:55,684 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:26:58,723 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:27:00,699 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:05,709 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:08,707 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:27:10,831 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:15,833 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:18,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:27:20,848 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:25,857 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:28,743 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:27:30,829 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:35,831 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:38,667 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:27:40,948 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:45,965 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:48,701 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:27:50,984 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:55,984 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:27:58,659 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:28:01,089 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:06,100 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:08,682 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:28:11,137 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:16,141 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:18,686 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:28:21,270 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:26,279 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:28,710 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:28:31,437 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:36,444 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:38,724 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:28:41,461 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:46,470 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:48,708 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:28:51,586 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:56,589 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:28:58,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:29:01,601 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:06,614 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:08,742 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:29:11,586 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:16,589 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:18,665 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:29:21,702 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:26,715 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:28,690 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:29:31,738 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:36,743 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:38,669 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:29:41,859 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:46,870 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:48,693 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:29:51,890 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:56,892 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:29:58,677 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:30:02,021 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:07,035 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:08,709 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:30:12,042 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:17,045 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:18,666 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:30:22,159 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:27,168 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:28,689 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:30:32,195 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:37,204 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:38,674 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:30:42,320 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:47,333 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:48,701 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:30:52,344 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:57,350 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:30:58,668 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:31:02,468 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:07,482 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:08,698 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:31:12,497 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:17,503 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:18,663 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:31:22,612 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:27,624 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:28,689 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:31:32,647 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:37,654 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:38,668 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:31:42,766 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:47,776 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:48,688 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:31:52,945 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:57,951 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:31:58,712 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 15:32:02,962 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:32:07,973 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 15:32:08,683 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=48
+2025-08-29 16:15:45,307 INFO bm_camera.agent: CONFIG loaded
+2025-08-29 16:15:45,312 INFO bm_camera.agent: DISPATCH topics=['camera/capture/image', 'camera/capture/video', 'spotter/utc-time', 'test/pi']
+2025-08-29 16:15:45,314 INFO bm_camera.bus: [BUS] open on /dev/serial0
+2025-08-29 16:15:45,315 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/image'
+2025-08-29 16:15:45,316 INFO bm_camera.bus: [SUB] subscribing to 'camera/capture/video'
+2025-08-29 16:15:45,318 INFO bm_camera.bus: [SUB] subscribing to 'spotter/utc-time'
+2025-08-29 16:15:45,319 INFO bm_camera.bus: [SUB] subscribing to 'test/pi'
+2025-08-29 16:15:45,320 INFO bm_camera.agent: RUN bm-agent running…
+2025-08-29 16:15:45,422 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:15:48,146 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:15:49,840 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:15:54,841 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:15:57,423 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:15:59,851 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:05,002 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:07,428 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:16:10,437 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:15,447 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:17,738 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:16:20,473 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:25,483 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:27,761 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:16:30,589 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:35,592 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:37,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:16:40,602 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:45,753 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:47,688 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:16:50,891 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:55,895 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:16:57,720 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:17:00,620 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=16
+2025-08-29 16:17:02,043 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T23:17:01Z_image.jpg (4935 bytes) res=90x90 burst=1/1
+2025-08-29 16:17:02,069 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 16:17:02,069 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 16:17:02,070 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 16:17:02,071 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 16:17:01\x00'
+2025-08-29 16:17:02,072 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 16:17:02,298 INFO bm_camera.image: [ENC] 2025-08-29T23:17:01Z_image.jpg -> 2025-08-29T23:17:01Z_image-c.heic (1309 bytes) fmt=heif q=25
+2025-08-29 16:17:02,299 ERROR bm_camera.image: [CAM/IMG][ERR] NameError("name 'send_flag' is not defined")
+Traceback (most recent call last):
+  File "/home/pi/bm_camera/camera_software/bm_camera/agent/handlers/capture_image_cmd.py", line 88, in handle
+    if send_flag:
+NameError: name 'send_flag' is not defined
+2025-08-29 16:17:02,371 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:17:07,522 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:17:07,706 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:17:12,552 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:17:17,562 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:17:17,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:17:22,576 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:17:27,691 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:17:28,017 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:17:33,167 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:17:34,082 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 16:17:35,433 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T23:17:35Z_image.jpg (4918 bytes) res=90x90 burst=1/1
+2025-08-29 16:17:35,436 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 16:17:35,437 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 16:17:35,437 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 16:17:35,438 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 16:17:35\x00'
+2025-08-29 16:17:35,439 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 16:17:35,644 INFO bm_camera.image: [ENC] 2025-08-29T23:17:35Z_image.jpg -> 2025-08-29T23:17:35Z_image-c.heic (1286 bytes) fmt=heif q=25
+2025-08-29 16:17:35,645 ERROR bm_camera.image: [CAM/IMG][ERR] NameError("name 'send_flag' is not defined")
+Traceback (most recent call last):
+  File "/home/pi/bm_camera/camera_software/bm_camera/agent/handlers/capture_image_cmd.py", line 88, in handle
+    if send_flag:
+NameError: name 'send_flag' is not defined
+2025-08-29 16:17:37,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:17:38,171 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:17:43,182 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:17:47,738 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:17:48,171 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:17:53,317 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:17:57,664 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:17:58,427 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:03,442 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:07,694 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:18:08,470 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:13,617 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:17,667 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:18:18,734 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:23,744 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:27,692 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:18:28,771 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:33,918 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:37,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:18:38,932 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:43,941 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:47,689 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:18:49,073 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:54,074 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:18:57,718 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:18:59,087 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:04,097 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:07,704 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:19:09,227 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:14,377 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:17,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:19:19,391 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:24,399 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:27,741 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:19:29,377 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:34,379 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:37,674 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:19:39,500 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:44,508 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:47,697 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:19:49,531 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:54,533 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:19:57,724 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:19:59,548 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:04,559 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:07,688 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:20:09,684 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:14,686 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:17,675 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:20:19,803 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:24,812 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:27,697 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:20:29,833 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:34,984 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:37,678 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:20:40,110 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:45,122 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:47,694 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:20:50,288 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:55,300 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:20:57,732 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:21:00,315 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:05,326 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:07,757 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:21:10,285 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:15,286 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:17,677 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:21:20,413 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:25,422 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:27,704 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:21:30,438 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:35,444 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:37,685 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:21:40,572 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:45,584 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:47,712 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:21:50,586 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:55,588 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:21:57,675 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:22:00,715 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:05,727 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:07,700 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:22:10,890 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:11,240 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=0 ver=0 topic='camera/capture/image' len=9
+2025-08-29 16:22:12,559 INFO bm_camera.image: [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/bm_camera/images/2025-08-29T23:22:12Z_image.jpg (4914 bytes) res=90x90 burst=1/1
+2025-08-29 16:22:12,564 DEBUG PIL.TiffImagePlugin: tag: Make (271) - type: string (2) Tag Location: 22 - Data Location: 74 - value: b'Raspberry Pi\x00'
+2025-08-29 16:22:12,565 DEBUG PIL.TiffImagePlugin: tag: Model (272) - type: string (2) Tag Location: 34 - Data Location: 87 - value: <table: 34 bytes>
+2025-08-29 16:22:12,566 DEBUG PIL.TiffImagePlugin: tag: Software (305) - type: string (2) Tag Location: 46 - Data Location: 121 - value: b'Picamera2\x00'
+2025-08-29 16:22:12,568 DEBUG PIL.TiffImagePlugin: tag: DateTime (306) - type: string (2) Tag Location: 58 - Data Location: 131 - value: b'2025:08:29 16:22:12\x00'
+2025-08-29 16:22:12,570 DEBUG PIL.TiffImagePlugin: tag: ExifIFD (34665) - type: long (4) - value: b'\x00\x00\x00\x97'
+2025-08-29 16:22:12,802 INFO bm_camera.image: [ENC] 2025-08-29T23:22:12Z_image.jpg -> 2025-08-29T23:22:12Z_image-c.heic (1313 bytes) fmt=heif q=25
+2025-08-29 16:22:12,803 ERROR bm_camera.image: [CAM/IMG][ERR] NameError("name 'send_flag' is not defined")
+Traceback (most recent call last):
+  File "/home/pi/bm_camera/camera_software/bm_camera/agent/handlers/capture_image_cmd.py", line 88, in handle
+    if send_flag:
+NameError: name 'send_flag' is not defined
+2025-08-29 16:22:15,900 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:17,718 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:22:20,913 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:25,924 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:27,746 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:22:31,043 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:36,050 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:37,688 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:22:41,183 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:46,195 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:47,714 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:22:51,346 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:56,356 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:22:57,684 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:23:01,481 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:06,492 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:07,708 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:23:11,493 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:16,502 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:17,682 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:23:21,632 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:26,642 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:27,707 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:23:31,644 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:36,652 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:37,667 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:23:41,769 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:46,779 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:47,691 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:23:51,800 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:56,804 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:23:57,677 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:24:01,927 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:06,936 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:07,698 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:24:11,952 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:16,968 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:17,689 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:24:22,092 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:27,100 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:27,709 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:24:32,249 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:37,257 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:37,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:24:42,270 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:47,282 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:47,680 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:24:52,403 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:57,414 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:24:57,720 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:25:02,428 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:25:07,438 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:25:07,744 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:25:12,552 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:25:17,563 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:25:17,717 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:25:22,577 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:25:27,679 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:25:28,023 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:25:33,170 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:25:37,674 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:25:38,281 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:25:43,430 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:25:47,684 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:25:48,470 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:25:53,618 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:25:57,675 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:25:58,737 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:03,739 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:07,687 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:26:08,773 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:13,922 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:17,717 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:26:18,935 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:23,949 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:27,698 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:26:29,073 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:34,074 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:37,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:26:39,088 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:44,098 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:47,682 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:26:49,223 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:54,371 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:26:57,711 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:26:59,384 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:04,393 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:07,683 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:27:09,529 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:14,679 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:17,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:27:19,694 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:24,706 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:27,744 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:27:29,679 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:34,682 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:37,720 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:27:39,696 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:44,708 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:47,686 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:27:49,832 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:54,832 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:27:57,718 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:27:59,850 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:04,864 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:07,700 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:28:09,980 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:14,986 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:17,723 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:28:20,002 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:25,014 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:27,750 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:28:29,984 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:34,985 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:37,684 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:28:40,115 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:45,127 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:47,714 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:28:50,132 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:55,283 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:28:57,673 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:29:00,406 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:05,415 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:07,696 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:29:10,436 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:15,439 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:17,718 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:29:20,451 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:25,460 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:27,677 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:29:30,588 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:35,590 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:37,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:29:40,602 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:45,618 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:47,689 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:29:50,737 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:55,741 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:29:57,718 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:30:00,759 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:05,770 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:07,699 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:30:10,892 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:15,898 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:17,681 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:30:21,025 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:26,038 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:27,709 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:30:31,042 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:36,051 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:37,685 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:30:41,183 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:46,195 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:47,677 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:30:51,343 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:56,349 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:30:57,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:31:01,364 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:06,379 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:07,707 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:31:11,498 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:16,508 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:17,726 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:31:21,526 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:26,540 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:27,707 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:31:31,644 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:36,649 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:37,673 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:31:41,772 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:46,784 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:47,697 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:31:51,796 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:56,804 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:31:57,717 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:32:01,816 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:06,825 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:07,677 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:32:11,947 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:16,952 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:17,713 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:32:21,964 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:26,974 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:27,695 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:32:32,101 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:37,109 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:37,718 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:32:42,123 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:47,138 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:47,747 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:32:52,250 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:57,254 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:32:57,709 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:33:02,254 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:33:07,264 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:33:07,681 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:33:12,399 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:33:17,409 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:33:17,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:33:22,420 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:33:27,430 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:33:27,736 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:33:32,552 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:33:37,562 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:33:37,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:33:42,575 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:33:47,678 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:33:48,016 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:33:53,162 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:33:57,722 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:33:58,180 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:03,193 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:07,708 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:34:08,319 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:13,468 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:17,720 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:34:18,481 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:23,494 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:27,748 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:34:28,618 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:33,765 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:37,711 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:34:38,776 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:43,785 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:47,683 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:34:48,920 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:53,925 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:34:57,684 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:34:59,052 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:04,061 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:07,705 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:35:09,074 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:14,225 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:17,680 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:35:19,352 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:24,361 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:27,704 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:35:29,384 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:34,534 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:37,724 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:35:39,547 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:44,556 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:47,695 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:35:49,679 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:54,830 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:35:57,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:35:59,843 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:04,855 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:07,701 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:36:09,982 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:14,984 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:17,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:36:19,998 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:25,007 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:27,740 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:36:30,133 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:35,136 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:37,719 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:36:40,149 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:45,159 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:47,691 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:36:50,284 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:55,285 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:36:57,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:37:00,299 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:05,310 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:07,701 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:37:10,440 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:15,442 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:17,723 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:37:20,457 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:25,471 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:27,709 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:37:30,585 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:35,588 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:37,716 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:37:40,601 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:45,610 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:47,737 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:37:50,587 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:55,594 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:37:57,722 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:38:00,608 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:05,622 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:07,681 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:38:10,740 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:15,742 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:17,727 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:38:20,764 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:25,772 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:27,746 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:38:30,737 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:35,744 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:37,720 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:38:40,758 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:45,768 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:47,683 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:38:50,895 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:55,901 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:38:57,724 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:39:00,912 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:05,921 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:07,704 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:39:11,040 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:16,044 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:17,715 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:39:21,056 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:26,065 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:27,736 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:39:31,042 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:36,045 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:37,717 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:39:41,058 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:46,068 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:47,678 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:39:51,193 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:56,204 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:39:57,757 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:40:01,249 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:40:06,258 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:40:07,780 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
+2025-08-29 16:40:11,345 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:40:16,354 DEBUG bm_camera.bus: [HB] bus alive
+2025-08-29 16:40:17,686 INFO bm_camera.agent: PUB node=0x769a017fae139c7 type=1 ver=1 topic='spotter/utc-time' len=88
