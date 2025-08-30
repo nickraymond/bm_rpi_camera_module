@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
 import logging
-from bm_camera.common.logging_config import setup_logging
-from bm_camera.common.logging_setup import setup_logging
-
-from bm_camera.common.config import load_config
-
 import signal, sys, time, hashlib, os
 from pathlib import Path
 
+from bm_camera.common.logging_setup import setup_logging      # <-- keep this one
+from bm_camera.common.config import load_config
 from bm_camera.agent.bus import open_bus, subscribe_many, loop
 from bm_camera.agent.dispatcher import build_dispatch, init_handlers, cleanup_handlers
 
@@ -26,7 +23,7 @@ DEDUP_DEFAULT_WINDOW_S = 2.0
 #   - "by_topic":   drop any repeat of same node/topic regardless of payload (ideal for triggers)
 DEDUP_RULES = {
 	"camera/capture/video": {"window": 8.0, "mode": "by_topic"},
-	"camera/capture/image": {"window": 5.0, "mode": "by_topic"},
+	"camera/capture/image": {"window": 10.0, "mode": "by_topic"},
 }
 
 _recent = {}                # key -> (last_seen_monotonic, ttl)
@@ -116,98 +113,39 @@ def _is_dup(node_id, topic_str, data: bytes) -> bool:
 	_prune_recent(now)
 	return False
 
-# --------- load config anchored to this file ---------
-HERE = Path(__file__).resolve().parent
-DEFAULT_CFG_PATH = HERE / "config.yaml"
-
+# --------- load config (no-arg loader) ---------
 def _load_cfg():
-	env_path = os.environ.get("BM_AGENT_CONFIG")
-	if env_path:
-		return load_config(env_path)
-	try:
-		return load_config(str(DEFAULT_CFG_PATH))
-	except TypeError:
-		prev = os.getcwd()
-		try:
-			os.chdir(str(HERE))
-			return load_config()
-		finally:
-			os.chdir(prev)
+	# Your current loader resolves bm_camera/agent/config.yaml internally,
+	# and also honors env (if you added that inside). No args here.
+	return load_config()
 
-
-# --------- main ---------
-# def main():
-# 	# 1) Load YAML (shared) and set up logging first
-# 	# from bm_camera.common.config import load_config
-# 	# from bm_camera.common.logging_config import setup_logging
-# 	# import logging
-# 
-# 	cfg = load_config()                  # replaces _load_cfg()
-# 	logger = setup_logging(cfg)          # enable console + rotating-file logs
-# 
-# 	# 2) Build handler context (stash cfg so handlers can read defaults/paths)
-# 	ctx = init_handlers(cfg)
-# 	ctx["cfg"] = cfg
-# 
-# 	# 3) Build dispatch table
-# 	raw_dispatch = build_dispatch(cfg)
-# 	dispatch = {_norm_topic(k): v for k, v in raw_dispatch.items()}
-# 
-# 	logger.info("[DISPATCH] topics=%s", list(dispatch.keys()))
-# 
-# 	# 4) Subscriber callback with de-dupe
-# 	def cb(node_id, type_, version, topic_len, topic, data_len, data: bytes):
-# 		topic_str = _norm_topic(topic)
-# 
-# 		# Drop duplicates BEFORE logging/handling
-# 		if _is_dup(node_id, topic_str, data):
-# 			return
-# 
-# 		logger.info("[PUB] node=%s type=%s ver=%s topic='%s' len=%s",
-# 					hex(node_id), type_, version, topic_str, data_len)
-# 
-# 		handler = dispatch.get(topic_str)
-# 		if handler:
-# 			try:
-# 				handler(node_id, topic_str, data, ctx)
-# 			except Exception as e:
-# 				logger.exception("[HANDLER][ERR] %r", e)
-# 		else:
-# 			logger.warning("[WARN] no handler for topic '%s' (known: %s)",
-# 						   topic_str, list(dispatch.keys()))
-# 
-# 	# 5) Open bus and subscribe
-# 	bm = open_bus(cfg.get("uart_device", "/dev/serial0"),
-# 				  cfg.get("baudrate", 115200))
-# 	ctx["bm"] = bm
-# 	subscribe_many(bm, list(dispatch.keys()), cb)
-# 
-# 	try:
-# 		logger.info("[RUN] bm-agent running…")
-# 		loop(bm, lambda: not _running)
-# 	finally:
-# 		cleanup_handlers(ctx)
 def main():
 	cfg = _load_cfg()
-	setup_logging(cfg)                     # <-- NEW: init logging early
+
+	# Init logging early using YAML settings
+	setup_logging(cfg)
 	log = logging.getLogger("bm_camera.agent")
-	
+
 	ctx = init_handlers(cfg)
-	
+
 	raw_dispatch = build_dispatch(cfg)
-	dispatch = {_norm_topic(k): v for k, v in raw_dispatch.items()}
-	
-	log.info("CONFIG using %s", DEFAULT_CFG_PATH)
-	log.info("DISPATCH topics=%s", list(dispatch.keys()))
-	
+	# ensure unique topics before subscribe
+	topics = sorted(set(_norm_topic(k) for k in raw_dispatch.keys()))
+	dispatch = {t: raw_dispatch[t] for t in topics if t in raw_dispatch}
+
+	log.info("CONFIG loaded")
+	log.info("DISPATCH topics=%s", topics)
+
 	def cb(node_id, type_, version, topic_len, topic, data_len, data: bytes):
 		topic_str = _norm_topic(topic)
+
+		# Drop duplicates BEFORE logging/handling
 		if _is_dup(node_id, topic_str, data):
 			return
-	
+
 		log.info("PUB node=%s type=%s ver=%s topic='%s' len=%s",
-				hex(node_id), type_, version, topic_str, data_len)
-	
+				 hex(node_id), type_, version, topic_str, data_len)
+
 		handler = dispatch.get(topic_str)
 		if handler:
 			try:
@@ -216,11 +154,11 @@ def main():
 				log.exception("HANDLER error: %r", e)
 		else:
 			log.warning("No handler for topic '%s' (known=%s)", topic_str, list(dispatch.keys()))
-	
+
 	bm = open_bus(cfg["uart_device"], cfg["baudrate"])
 	ctx["bm"] = bm
-	subscribe_many(bm, list(dispatch.keys()), cb)
-	
+	subscribe_many(bm, topics, cb)
+
 	try:
 		log.info("RUN bm-agent running…")
 		loop(bm, lambda: not _running)

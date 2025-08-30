@@ -2,7 +2,8 @@
 import logging
 import os, sys
 from pathlib import Path
-from camera_lock import CameraLock
+from bm_camera.utils.camera_lock import CameraLock
+from bm_camera.capture import capture_video
 
 logger = logging.getLogger("bm_camera.video")
 
@@ -12,7 +13,6 @@ sp = str(CAMERA_SW_DIR)
 if sp not in sys.path:
     sys.path.insert(0, sp)
 
-from video_capture import save_video
 from bm_camera.common.config import get_camera_defaults
 from .status_util import send_status
 
@@ -75,7 +75,7 @@ def handle(node_id, topic: str, data: bytes, ctx):
     lock_timeout = max(10.0, float(dur) + 5.0)
     try:
         with CameraLock(timeout_s=lock_timeout):
-            path = save_video(
+            path = capture_video(
                 base_name="VID",
                 duration_s=dur,
                 resolution_key=res,

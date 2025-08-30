@@ -10,7 +10,8 @@ import sys
 PROJECT = Path.home() / "bm_camera" / "camera_software"
 if str(PROJECT) not in sys.path:
     sys.path.insert(0, str(PROJECT))
-from bm_serial import BristlemouthSerial  # noqa
+from bm_camera.io.bm_serial import BristlemouthSerial
+
 
 TYPE_TEXT = 0x00
 TYPE_JSON = 0x03  # keep for bench publishing JSON
