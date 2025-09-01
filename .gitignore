@@ -1,0 +1,7 @@
+
+# Local only
+archive_remote_server/
+parsed_images/
+.venv/
+__pycache__/
+*.pyc
