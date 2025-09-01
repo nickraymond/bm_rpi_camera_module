@@ -1,5 +1,13 @@
+# Local only / artifacts
+archive_remote_server/
+parsed_images/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.vscode/
 
-# Local only
 archive_remote_server/
 parsed_images/
 .venv/
