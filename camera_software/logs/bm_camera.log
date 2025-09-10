@@ -1,0 +1,69 @@
+2025-09-09T20:57:38.%fZ [AGENT] [INFO] CONFIG loaded
+2025-09-09T20:57:38.%fZ [AGENT] [INFO] DISPATCH topics=['camera/capture/image', 'camera/capture/video', 'spotter/utc-time', 'test/pi']
+2025-09-09T20:57:38.%fZ [BUS] [INFO] [BUS] open on /dev/serial0
+2025-09-09T20:57:38.%fZ [BUS] [INFO] [SUB] subscribing to 'camera/capture/image'
+2025-09-09T20:57:38.%fZ [BUS] [INFO] [SUB] subscribing to 'camera/capture/video'
+2025-09-09T20:57:38.%fZ [BUS] [INFO] [SUB] subscribing to 'spotter/utc-time'
+2025-09-09T20:57:38.%fZ [BUS] [INFO] [SUB] subscribing to 'test/pi'
+2025-09-09T20:57:38.%fZ [AGENT] [INFO] RUN bm-agent running…
+2025-09-09T20:57:40.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:57:40.%fZ [RTC] [INFO] ts=2025-09-10T03:57:40.734000+00:00 (µs since epoch)
+2025-09-09T20:57:40.%fZ [RTC] [INFO] ts=2025-09-10T03:57:40.734000+00:00 (µs since epoch)
+2025-09-09T20:57:40.%fZ [CLOCK] [INFO] drift=+0.464s (target=2025-09-10T03:57:40.734000Z)
+2025-09-09T20:57:42.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=0 ver=0 topic='camera/capture/image' len=16
+2025-09-09T20:57:42.%fZ [picamera2.picamera2] [INFO] Initialization successful.
+2025-09-09T20:57:42.%fZ [picamera2.picamera2] [INFO] Camera now open.
+2025-09-09T20:57:42.%fZ [picamera2.picamera2] [INFO] Camera configuration has been adjusted!
+2025-09-09T20:57:42.%fZ [picamera2.picamera2] [INFO] Configuration successful!
+2025-09-09T20:57:42.%fZ [picamera2.picamera2] [INFO] Camera started
+2025-09-09T20:57:43.%fZ [picamera2.request] [INFO] Saved <picamera2.request.Helpers object at 0x7f83d35040> to file /home/pi/bm_camera/camera_software/images/2025-09-10T03:57:43Z_image.jpg.
+2025-09-09T20:57:43.%fZ [picamera2.request] [INFO] Time taken for encode: 41.83812500014028 ms.
+2025-09-09T20:57:43.%fZ [picamera2.picamera2] [INFO] Camera stopped
+2025-09-09T20:57:43.%fZ [picamera2.picamera2] [INFO] Camera closed successfully.
+2025-09-09T20:57:43.%fZ [IMG] [INFO] [CAM/IMG] CAPTURED /home/pi/bm_camera/camera_software/images/2025-09-10T03:57:43Z_image.jpg (3737 bytes) res=90x90 burst=1/1
+2025-09-09T20:57:44.%fZ [IMG] [INFO] [ENC] 2025-09-10T03:57:43Z_image.jpg -> 2025-09-10T03:57:43Z_image-c.heic (1057 bytes) fmt=heif q=25
+2025-09-09T20:57:44.%fZ [IMG] [INFO] [TX] skipped (send flag false)
+2025-09-09T20:57:50.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:57:50.%fZ [RTC] [INFO] ts=2025-09-10T03:57:50.734000+00:00 (µs since epoch)
+2025-09-09T20:57:50.%fZ [RTC] [INFO] ts=2025-09-10T03:57:50.734000+00:00 (µs since epoch)
+2025-09-09T20:57:50.%fZ [CLOCK] [INFO] drift=+0.455s (target=2025-09-10T03:57:50.734000Z)
+2025-09-09T20:58:00.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:58:00.%fZ [RTC] [INFO] ts=2025-09-10T03:58:00.730000+00:00 (µs since epoch)
+2025-09-09T20:58:00.%fZ [RTC] [INFO] ts=2025-09-10T03:58:00.730000+00:00 (µs since epoch)
+2025-09-09T20:58:00.%fZ [CLOCK] [INFO] drift=+0.468s (target=2025-09-10T03:58:00.730000Z)
+2025-09-09T20:58:10.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:58:10.%fZ [RTC] [INFO] ts=2025-09-10T03:58:10.730000+00:00 (µs since epoch)
+2025-09-09T20:58:10.%fZ [RTC] [INFO] ts=2025-09-10T03:58:10.730000+00:00 (µs since epoch)
+2025-09-09T20:58:10.%fZ [CLOCK] [INFO] drift=+0.465s (target=2025-09-10T03:58:10.730000Z)
+2025-09-09T20:58:20.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:58:20.%fZ [RTC] [INFO] ts=2025-09-10T03:58:20.726000+00:00 (µs since epoch)
+2025-09-09T20:58:20.%fZ [RTC] [INFO] ts=2025-09-10T03:58:20.726000+00:00 (µs since epoch)
+2025-09-09T20:58:20.%fZ [CLOCK] [INFO] drift=+0.439s (target=2025-09-10T03:58:20.726000Z)
+2025-09-09T20:58:30.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:58:30.%fZ [RTC] [INFO] ts=2025-09-10T03:58:30.726000+00:00 (µs since epoch)
+2025-09-09T20:58:30.%fZ [RTC] [INFO] ts=2025-09-10T03:58:30.726000+00:00 (µs since epoch)
+2025-09-09T20:58:30.%fZ [CLOCK] [INFO] drift=+0.470s (target=2025-09-10T03:58:30.726000Z)
+2025-09-09T20:58:40.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:58:40.%fZ [RTC] [INFO] ts=2025-09-10T03:58:40.722000+00:00 (µs since epoch)
+2025-09-09T20:58:40.%fZ [RTC] [INFO] ts=2025-09-10T03:58:40.722000+00:00 (µs since epoch)
+2025-09-09T20:58:40.%fZ [CLOCK] [INFO] drift=+0.442s (target=2025-09-10T03:58:40.722000Z)
+2025-09-09T20:58:50.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:58:50.%fZ [RTC] [INFO] ts=2025-09-10T03:58:50.722000+00:00 (µs since epoch)
+2025-09-09T20:58:50.%fZ [RTC] [INFO] ts=2025-09-10T03:58:50.722000+00:00 (µs since epoch)
+2025-09-09T20:58:50.%fZ [CLOCK] [INFO] drift=+0.465s (target=2025-09-10T03:58:50.722000Z)
+2025-09-09T20:59:00.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:59:00.%fZ [RTC] [INFO] ts=2025-09-10T03:59:00.718000+00:00 (µs since epoch)
+2025-09-09T20:59:00.%fZ [RTC] [INFO] ts=2025-09-10T03:59:00.718000+00:00 (µs since epoch)
+2025-09-09T20:59:00.%fZ [CLOCK] [INFO] drift=+0.440s (target=2025-09-10T03:59:00.718000Z)
+2025-09-09T20:59:10.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:59:10.%fZ [RTC] [INFO] ts=2025-09-10T03:59:10.718000+00:00 (µs since epoch)
+2025-09-09T20:59:10.%fZ [RTC] [INFO] ts=2025-09-10T03:59:10.718000+00:00 (µs since epoch)
+2025-09-09T20:59:10.%fZ [CLOCK] [INFO] drift=+0.465s (target=2025-09-10T03:59:10.718000Z)
+2025-09-09T20:59:20.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:59:20.%fZ [RTC] [INFO] ts=2025-09-10T03:59:20.714000+00:00 (µs since epoch)
+2025-09-09T20:59:20.%fZ [RTC] [INFO] ts=2025-09-10T03:59:20.714000+00:00 (µs since epoch)
+2025-09-09T20:59:20.%fZ [CLOCK] [INFO] drift=+0.436s (target=2025-09-10T03:59:20.714000Z)
+2025-09-09T20:59:30.%fZ [AGENT] [INFO] PUB node=0xe582dd12c1e1480 type=1 ver=1 topic='spotter/utc-time' len=128
+2025-09-09T20:59:30.%fZ [RTC] [INFO] ts=2025-09-10T03:59:30.714000+00:00 (µs since epoch)
+2025-09-09T20:59:30.%fZ [RTC] [INFO] ts=2025-09-10T03:59:30.714000+00:00 (µs since epoch)
+2025-09-09T20:59:30.%fZ [CLOCK] [INFO] drift=+0.464s (target=2025-09-10T03:59:30.714000Z)

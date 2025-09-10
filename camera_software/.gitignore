@@ -1,26 +1,5 @@
-# Python
-__pycache__/
-*.pyc
-
-# Local envs
-.venv/
-bm_agent/.venv/
-
-# Runtime artifacts
-images/
-videos/
+*.bak
+video/
+image/
 buffer/
-cleanup/artifacts/
-cleanup/logs/
-
-# Logs & temp
-*.log
-*.csv
-*.tmp
-
-# Vendor junk (kept quarantined)
-cleanup/vendor-libheif/
-
-# OS/files
-.DS_Store
-Thumbs.db
+log/
