@@ -3,7 +3,7 @@
 import base64, os, time, logging
 from pathlib import Path
 
-logger = logging.getLogger("bm_camera.tx.spotter")
+logger = logging.getLogger("TX")
 
 def build_base64_chunks(path: Path, *, chunk_size=300):
 	"""

@@ -3,7 +3,7 @@ import logging
 import signal, sys, time, hashlib, os
 from pathlib import Path
 
-from bm_camera.common.logging_setup import setup_logging      # <-- keep this one
+from bm_camera.common.logging_config import setup_logging
 from bm_camera.common.config import load_config
 from bm_camera.agent.bus import open_bus, subscribe_many, loop
 from bm_camera.agent.dispatcher import build_dispatch, init_handlers, cleanup_handlers
@@ -124,7 +124,7 @@ def main():
 
 	# Init logging early using YAML settings
 	setup_logging(cfg)
-	log = logging.getLogger("bm_camera.agent")
+	log = logging.getLogger("AGENT")
 
 	ctx = init_handlers(cfg)
 

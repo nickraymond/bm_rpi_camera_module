@@ -11,7 +11,7 @@ from bm_camera.transport.spotter import (
     build_base64_chunks, mirror_chunks_to_buffer, send_chunks_to_spotter
 )
 
-logger = logging.getLogger("bm_camera.image")
+logger = logging.getLogger("IMG")
 
 
 def _payload_to_str(data: bytes) -> str:

@@ -1,0 +1,5 @@
+*.bak
+video/
+image/
+buffer/
+log/

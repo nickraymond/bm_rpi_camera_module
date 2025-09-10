@@ -7,7 +7,7 @@
 # from datetime import datetime, timezone
 # from bm_camera.io.bm_serial import BristlemouthSerial
 # 
-# logger = logging.getLogger("bm_camera.bus")
+# logger = logging.getLogger("BUS")
 # 
 # 
 # def _uart_safety(uart):
@@ -68,7 +68,7 @@
 # # 	# 			last_dot = now
 # # 	# 		time.sleep(0.05)
 # def loop(bm: BristlemouthSerial, should_stop=None):
-# 	logger = logging.getLogger("bm_camera.bus")
+# 	logger = logging.getLogger("BUS")
 # 	try:
 # 		last_hb = 0.0
 # 		while True:
@@ -96,7 +96,7 @@ from datetime import datetime, timezone
 
 from bm_camera.io.bm_serial import BristlemouthSerial
 
-log = logging.getLogger("bm_camera.bus")
+log = logging.getLogger("BUS")
 
 
 def _uart_safety(uart):

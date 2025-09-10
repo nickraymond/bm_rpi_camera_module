@@ -22,7 +22,7 @@ paths:
   
 logging:
   level: INFO             # DEBUG|INFO|WARNING|ERROR
-  dir: "/home/pi/bm_camera/logs"
+  dir: "/home/pi/bm_camera/camera_software/logs"
   file: "bm_camera.log"
   rotate_max_bytes: 1048576
   rotate_backups: 5
@@ -41,6 +41,7 @@ camera:
     480p:  [854, 480]
     VGA:   [640, 480]
     90x90: [90, 90]
+    160x160: [160, 160]
     320x320: [320, 320]
   
   # status acks/errors are published here

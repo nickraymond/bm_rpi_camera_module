@@ -5,7 +5,7 @@ from pathlib import Path
 from bm_camera.utils.camera_lock import CameraLock
 from bm_camera.capture import capture_video
 
-logger = logging.getLogger("bm_camera.video")
+logger = logging.getLogger("VID")
 
 # make camera_software visible on sys.path
 CAMERA_SW_DIR = Path(__file__).resolve().parents[3]
