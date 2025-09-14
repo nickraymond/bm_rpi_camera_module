@@ -89,3 +89,28 @@ def send_chunks_to_spotter(bm, *, file_label: str, chunks: list[str],
 	# END
 	bm.spotter_tx(f"<END {kind}>\n".encode("ascii"))
 	logger.info("[TX] END %s", file_label)
+	
+	
+# Added Sep 9 - testing dedupes
+# --- YAML-driven TX settings (read by image handler) -------------------------
+def get_spotter_tx_settings() -> dict:
+	"""
+	Read chunking & pacing from YAML. If keys are absent, fall back to safe defaults.
+	Looks first under danger_zone.transport.spotter, then transport.spotter.
+	"""
+	try:
+		# local import avoids any import cycle during early startup
+		from bm_camera.common.config import load_config
+		cfg = load_config()
+	except Exception:
+		cfg = {}
+
+	dz_transport = (cfg.get("danger_zone") or {}).get("transport") or {}
+	primary      = (cfg.get("transport") or {}).get("spotter") or {}
+	override     = dz_transport.get("spotter") or {}
+
+	spot = {**primary, **override}  # danger_zone overrides primary if present
+	return {
+		"chunk_size": int(spot.get("chunk_size", 300)),
+		"delay_s":   float(spot.get("delay_s", 5.0)),
+	}

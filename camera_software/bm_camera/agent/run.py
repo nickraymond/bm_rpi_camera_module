@@ -17,13 +17,13 @@ signal.signal(signal.SIGTERM, _term)
 signal.signal(signal.SIGINT, _term)
 
 # --------- de-dupe config ---------
-DEDUP_DEFAULT_WINDOW_S = 2.0
+DEDUP_DEFAULT_WINDOW_S = 0.10
 # mode:
 #   - "by_payload": drop only exact repeat of same node/topic/payload
 #   - "by_topic":   drop any repeat of same node/topic regardless of payload (ideal for triggers)
 DEDUP_RULES = {
-	"camera/capture/video": {"window": 8.0, "mode": "by_topic"},
-	"camera/capture/image": {"window": 10.0, "mode": "by_topic"},
+	"camera/capture/video": {"window": 0.10,  "mode": "by_topic"},
+	"camera/capture/image": {"window": 0.10, "mode": "by_topic"},  # give TX time to finish
 }
 
 _recent = {}                # key -> (last_seen_monotonic, ttl)
@@ -105,9 +105,20 @@ def _is_dup(node_id, topic_str, data: bytes) -> bool:
 	win = _dynamic_window(topic_str, data, base_win)
 	key = _dedupe_key(node_id, topic_str, data, mode)
 
-	hit = key in _recent and (now - _recent[key][0]) < _recent[key][1]
+	prev = _recent.get(key)
+	hit = (prev is not None) and ((now - prev[0]) < prev[1])
+
+	# Always update the watermark so a stream of repeats stays suppressed
 	_recent[key] = (now, win)
+
 	if hit:
+		lg = logging.getLogger("AGENT")
+		delta = now - prev[0]
+		if topic_str == "camera/capture/image":
+			lg.warning("DEDUP drop topic='%s' window=%.1fs Δ=%.2fs payload='%s'",
+					   topic_str, win, delta, _payload_to_str(data))
+		else:
+			lg.warning("DEDUP drop topic='%s' window=%.1fs", topic_str, win)
 		return True
 
 	_prune_recent(now)
@@ -115,8 +126,6 @@ def _is_dup(node_id, topic_str, data: bytes) -> bool:
 
 # --------- load config (no-arg loader) ---------
 def _load_cfg():
-	# Your current loader resolves bm_camera/agent/config.yaml internally,
-	# and also honors env (if you added that inside). No args here.
 	return load_config()
 
 def main():
