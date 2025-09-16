@@ -1,0 +1,78 @@
+uart_device: /dev/serial0
+baudrate: 115200
+
+topics:
+  rtc: "spotter/utc-time"
+  test_pi: test/pi
+  camera_capture_image: camera/capture/image
+  camera_capture_video: camera/capture/video
+  camera_status: camera/status
+
+clock:
+  enabled: true
+  max_backward_seconds: 10        # 0 = never move backwards
+  apply_if_drift_seconds: 0.5      # only step if |drift| > 2s
+  min_apply_interval_seconds: 15  # at most once every N seconds
+  
+paths:
+  #data_root: "/home/pi/bm_daemon/camera_software"   # or "~/.local/share/bm_daemon"
+  data_root: "."
+  images: "images"
+  videos: "videos"
+  buffer: "buffer"
+  
+logging:
+  # DEBUG = shows HB message
+  # INFO = shows clock, count cell messages
+  
+  level: INFO             # DEBUG|INFO|WARNING|ERROR
+  #dir: "/home/pi/bm_daemon/camera_software/logs"
+  dir: "logs"
+  file: "bm_daemon.log"
+  rotate_max_bytes: 1048576
+  rotate_backups: 5
+  console: true           # also mirror to stdout
+
+
+
+camera:
+  resolutions:
+    12MP:  [4056, 3040]
+    8MP:   [3264, 2448]
+    5MP:   [2592, 1944]
+    4MP:   [2464, 1848]
+    1080p: [1920, 1080]
+    720p:  [1280, 720]
+    480p:  [854, 480]
+    VGA:   [640, 480]
+    90x90: [90, 90]
+    160x160: [160, 160]
+    320x320: [320, 320]
+  
+  # status acks/errors are published here
+  status_topic: "camera/status"
+  
+  defaults:
+    # (optional) values both modes inherit unless overridden below
+    common:
+      res: "720p"
+  
+    image:
+      res: "1080p"
+      burst: 1
+      interval_s: 0.0
+      encode_format: "heif"   # or "jpeg"
+      quality: 25
+      send_via_spotter: false    # NEW: default = don't transmit
+
+  
+    video:
+      res: "720p"
+      dur_s: 3.0
+      fps: 30
+      bitrate: 3000000
+      hflip: false
+      vflip: false
+      encode_format: "mp4"   # for the future
+      quality: 25           # for the future
+      send_via_spotter: false    # NEW: default = don't transmit

@@ -4,11 +4,13 @@ __pycache__/
 *.pyc
 .venv/
 
+
 # Output folders (current layout)
-camera_software/images/
-camera_software/videos/
-camera_software/buffer/
+images/
+videos/
+buffer/
+logs/
 
 # Output folders (future layout)
-bm_camera/data/
+bm_daemon/data/
 GIT
