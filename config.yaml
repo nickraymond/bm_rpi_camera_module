@@ -3,10 +3,10 @@ baudrate: 115200
 
 topics:
   rtc: "spotter/utc-time"
-  test_pi: test/pi
-  camera_capture_image: camera/capture/image
-  camera_capture_video: camera/capture/video
+  camera_capture_image: "camera/capture/image"
+  camera_capture_video: "camera/capture/video"
   camera_status: camera/status
+  test_pi: test/pi
 
 clock:
   enabled: true
@@ -76,3 +76,11 @@ camera:
       encode_format: "mp4"   # for the future
       quality: 25           # for the future
       send_via_spotter: false    # NEW: default = don't transmit
+
+
+# plugins:
+#   - "bm_camera.handlers.capture_image_cmd:CaptureImageHandler"
+#   - "bm_camera.handlers.capture_video_cmd:CaptureVideoHandler"
+plugins:
+- "bm_camera.handlers.capture_image_cmd"
+- "bm_camera.handlers.capture_video_cmd"

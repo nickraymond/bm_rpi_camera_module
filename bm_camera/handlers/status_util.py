@@ -1,7 +1,7 @@
 # bm_agent/handlers/status_util.py
 from pathlib import Path
 from bm_daemon.common.config import get_status_topic
-from ..publish import pub_text
+from bm_daemon.agent.publish import pub_text
 
 
 

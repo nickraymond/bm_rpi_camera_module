@@ -11,7 +11,7 @@ from picamera2.outputs import FfmpegOutput, FileOutput
 from bm_daemon.common.paths import video_dir
 from bm_daemon.common.config import get_resolutions
 from bm_daemon.common.config import resolve_resolution
-from bm_daemon.utils.camera_lock import CameraLock
+from bm_camera.utils.camera_lock import CameraLock
 
 
 
