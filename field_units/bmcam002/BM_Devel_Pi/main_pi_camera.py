@@ -1,81 +1,3 @@
-# # # filename: main_pi_camera.py
-# # # description: look into log file, get new index, take a picture, split it up and send
-# 
-# import os
-# import csv
-# import time
-# import subprocess  # Fix for missing import
-# from datetime import datetime, timezone
-# 
-# #from process_image import capture_image, compress_and_send_image, get_cpu_temperature, get_file_size
-# from process_image_v2 import capture_image, compress_and_send_image, get_cpu_temperature, get_file_size, debug_print
-# from process_image_v2 import IMAGE_DIRECTORY, BUFFER_SIZE, log_message, COMPRESSION_QUALITY, RESOLUTION_KEY, DEBUG, close_bm_serial
-# 
-# 
-# # Time window in military format (5:00 AM to 11:59 PM)
-# time_start = (0, 0)  
-# time_end = (23, 59)
-# 
-# def get_rtc_time():
-# 	"""Retrieve the current time from the RTC."""
-# 	try:
-# 		result = subprocess.run(["sudo", "hwclock", "-r"], capture_output=True, text=True)
-# 		rtc_time_str = result.stdout.strip()
-# 		rtc_time = datetime.strptime(rtc_time_str.split('.')[0], '%Y-%m-%d %H:%M:%S').replace(tzinfo=timezone.utc)
-# 		debug_print(f"RTC Time: {rtc_time}")
-# 		return rtc_time
-# 	except Exception as e:
-# 		debug_print(f"Error reading RTC time: {e}")
-# 		return None
-# 
-# def is_within_time_window(rtc_time, time_start, time_end):
-# 	"""Check if the current RTC time is within the specified time window."""
-# 	start_time = datetime(rtc_time.year, rtc_time.month, rtc_time.day, time_start[0], time_start[1]).time()
-# 	end_time = datetime(rtc_time.year, rtc_time.month, rtc_time.day, time_end[0], time_end[1]).time()
-# 	is_within = start_time <= rtc_time.time() < end_time
-# 	debug_print(f"Time is within window: {is_within}")
-# 	return is_within
-# 
-# 
-# 
-# def main():
-# 	"""Main function to orchestrate the camera workflow."""
-# 	start_time = time.time()
-# 	
-# 	rtc_time = get_rtc_time()
-# 	if rtc_time:
-# 		within_window = is_within_time_window(rtc_time, time_start, time_end)
-# 		
-# 		if within_window:
-# 			# Capture the raw image
-# 			image_path = capture_image(resolution_key=RESOLUTION_KEY)
-# 			file_size_raw = get_file_size(image_path)
-# 			cpu_temp = get_cpu_temperature()
-# 	
-# 			# Compress the image and get details
-# 			compressed_file_name, num_buffers, file_size_compressed = compress_and_send_image(image_path)
-# 	
-# 			# Calculate execution time
-# 			end_time = time.time()
-# 			execution_time = (end_time - start_time) / 60
-# 	
-# 			# Log the details
-# 			log_message(
-# 				rtc_time, compressed_file_name, file_size_raw, file_size_compressed,
-# 				COMPRESSION_QUALITY, num_buffers, execution_time, within_window, cpu_temp
-# 			)
-# 			
-# 			close_bm_serial()
-# 	
-# 		else:
-# 			debug_print("Not within the time window. Skipping capture.")
-# 	else:
-# 		debug_print("Failed to read RTC time.")
-# 
-# 
-# if __name__ == "__main__":
-# 			main()
-
 # filename: main_pi_camera.py
 # description: take a picture, split it up and send
 #
@@ -101,9 +23,9 @@ from datetime import datetime, timezone
 
 from process_image_v2 import (
 	capture_image, compress_and_send_image, get_cpu_temperature, get_file_size, debug_print,
-	IMAGE_DIRECTORY, BUFFER_SIZE, log_message, COMPRESSION_QUALITY, RESOLUTION_KEY, DEBUG, close_bm_serial
+	IMAGE_DIRECTORY, BUFFER_SIZE, log_message, IMAGE_QUALITY, RESOLUTION_KEY, RESOLUTIONS, DEBUG, close_bm_serial
 )
-from spotter_time_sync import should_transmit_now_from_schedule
+from spotter_time_sync import should_transmit_now_from_schedule, load_camera_schedule
 
 # ==== CONFIGURATION ====
 USE_RTC = False  # Set to True if using a hardware RTC; False will use the Pi's system clock.
@@ -141,7 +63,24 @@ def is_within_time_window(current_time, time_start, time_end):
 	return is_within
 
 
-def main(transmit_image=False):
+def get_runtime_image_settings(resolution_key_override=None, image_quality_override=None):
+	"""Load default image settings from camera_schedule.yaml and apply CLI overrides."""
+	cfg = load_camera_schedule(SCHEDULE_CONFIG_PATH)
+
+	resolution_key = resolution_key_override or getattr(cfg, "resolution_key", RESOLUTION_KEY) or RESOLUTION_KEY
+	image_quality = image_quality_override if image_quality_override is not None else getattr(cfg, "image_quality", IMAGE_QUALITY)
+
+	if resolution_key not in RESOLUTIONS:
+		raise ValueError(f"Invalid resolution key '{resolution_key}'. Choose from: {', '.join(sorted(RESOLUTIONS.keys()))}")
+
+	image_quality = int(image_quality)
+	if image_quality < 0 or image_quality > 100:
+		raise ValueError("image_quality must be between 0 and 100. Lower = smaller/more compressed; higher = larger/better quality.")
+
+	return resolution_key, image_quality
+
+
+def main(transmit_image=False, resolution_key_override=None, image_quality_override=None):
 	"""Main function to orchestrate the camera workflow."""
 	start_time = time.time()
 
@@ -163,6 +102,18 @@ def main(transmit_image=False):
 			close_bm_serial()
 			return
 
+	try:
+		runtime_resolution_key, runtime_image_quality = get_runtime_image_settings(
+			resolution_key_override=resolution_key_override,
+			image_quality_override=image_quality_override,
+		)
+		debug_print(f"Image resolution key: {runtime_resolution_key}")
+		debug_print(f"Image quality: {runtime_image_quality}")
+	except Exception as e:
+		debug_print(f"Invalid image settings. Skipping capture/transmit: {e}")
+		close_bm_serial()
+		return
+
 	# Choose the source for current time based on the USE_RTC flag.
 	current_time = get_rtc_time() if USE_RTC else datetime.now()
 
@@ -171,13 +122,15 @@ def main(transmit_image=False):
 
 		if within_window:
 			# Capture the raw image
-			image_path = capture_image(resolution_key=RESOLUTION_KEY)
+			image_path = capture_image(resolution_key=runtime_resolution_key)
 			file_size_raw = get_file_size(image_path)
 			cpu_temp = get_cpu_temperature()
 
 			if transmit_image:
 				# Compress and transmit image
-				compressed_file_name, num_buffers, file_size_compressed = compress_and_send_image(image_path)
+				compressed_file_name, num_buffers, file_size_compressed = compress_and_send_image(
+					image_path, image_quality=runtime_image_quality
+				)
 			else:
 				compressed_file_name = "N/A"
 				num_buffers = 0
@@ -190,7 +143,7 @@ def main(transmit_image=False):
 			# Log the details; using 'within_window' for record-keeping.
 			log_message(
 				current_time, compressed_file_name, file_size_raw, file_size_compressed,
-				COMPRESSION_QUALITY, num_buffers, execution_time, within_window, cpu_temp
+				runtime_image_quality, num_buffers, execution_time, within_window, cpu_temp
 			)
 
 			close_bm_serial()
@@ -203,6 +156,25 @@ def main(transmit_image=False):
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description="Camera capture script with optional UART transmission.")
 	parser.add_argument('--transmit', action='store_true', help='Enable transmission over UART after capture')
+	parser.add_argument(
+		'--resolution-key',
+		default=None,
+		choices=sorted(RESOLUTIONS.keys()),
+		help='Override image resolution key for this run. Default comes from camera_schedule.yaml.',
+	)
+	parser.add_argument(
+		'--image-quality',
+		type=int,
+		default=None,
+		help='Override encoder image quality for this run, 0-100. Lower = smaller/more compressed; higher = larger/better quality.',
+	)
 	args = parser.parse_args()
 
-	main(transmit_image=args.transmit)
+	if args.image_quality is not None and not (0 <= args.image_quality <= 100):
+		parser.error('--image-quality must be between 0 and 100')
+
+	main(
+		transmit_image=args.transmit,
+		resolution_key_override=args.resolution_key,
+		image_quality_override=args.image_quality,
+	)

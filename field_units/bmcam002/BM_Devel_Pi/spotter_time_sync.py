@@ -40,6 +40,8 @@ class CameraSchedule:
     allow_system_clock_fallback: bool = False
     uart_port: str = "/dev/ttyAMA0"
     baudrate: int = 115200
+    resolution_key: str = "720p"
+    image_quality: int = 25
 
 
 def _parse_bool(value: str) -> bool:
@@ -50,12 +52,20 @@ def load_camera_schedule(path: str = "camera_schedule.yaml") -> CameraSchedule:
     """
     Tiny parser for the specific camera_schedule.yaml shape.
     Avoids adding PyYAML to the field unit.
+
+    Supported sections:
+      transmit_window:
+        start: "12:00"
+        end: "15:00"
+      image:
+        resolution_key: "720p"
+        image_quality: 25
     """
     cfg = CameraSchedule()
     if not os.path.exists(path):
         return cfg
 
-    in_window = False
+    section = None
     with open(path, "r", encoding="utf-8") as f:
         for raw in f:
             line = raw.split("#", 1)[0].rstrip()
@@ -63,8 +73,8 @@ def load_camera_schedule(path: str = "camera_schedule.yaml") -> CameraSchedule:
                 continue
 
             stripped = line.strip()
-            if stripped == "transmit_window:":
-                in_window = True
+            if stripped.endswith(":") and ":" not in stripped[:-1]:
+                section = stripped[:-1]
                 continue
 
             if ":" not in stripped:
@@ -74,15 +84,22 @@ def load_camera_schedule(path: str = "camera_schedule.yaml") -> CameraSchedule:
             key = key.strip()
             value = value.strip().strip('"').strip("'")
 
-            if in_window and key == "start":
-                cfg.transmit_start = value
-                continue
-            if in_window and key == "end":
-                cfg.transmit_end = value
+            if not raw.startswith(" ") and key not in {"transmit_window", "image"}:
+                section = None
+
+            if section == "transmit_window":
+                if key == "start":
+                    cfg.transmit_start = value
+                elif key == "end":
+                    cfg.transmit_end = value
                 continue
 
-            if not raw.startswith(" ") and key != "transmit_window":
-                in_window = False
+            if section == "image":
+                if key == "resolution_key":
+                    cfg.resolution_key = value
+                elif key == "image_quality":
+                    cfg.image_quality = int(value)
+                continue
 
             if key == "timezone":
                 cfg.timezone = value
@@ -98,7 +115,6 @@ def load_camera_schedule(path: str = "camera_schedule.yaml") -> CameraSchedule:
                 cfg.baudrate = int(value)
 
     return cfg
-
 
 def _crc(seed: int, src: bytes) -> int:
     """

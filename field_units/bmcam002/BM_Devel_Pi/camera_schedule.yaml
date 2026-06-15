@@ -3,7 +3,7 @@
 # For San Francisco / Los Angeles testing:
 #   America/Los_Angeles
 #
-# For Florida Keys deployment:
+# For Florida Keys / US East Coast deployment:
 #   America/New_York
 #
 # Time is evaluated by reading Spotter UTC from the BM bus and converting
@@ -14,6 +14,11 @@ timezone: "America/Los_Angeles"
 transmit_window:
   start: "12:00"
   end: "15:00"
+
+# Image defaults used by main_pi_camera.py unless overridden on the CLI.
+image:
+  resolution_key: "720p"
+  image_quality: 25
 
 set_system_clock_from_spotter: true
 spotter_time_timeout_seconds: 60

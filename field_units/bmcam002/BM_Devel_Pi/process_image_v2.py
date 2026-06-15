@@ -31,21 +31,45 @@ IMAGE_DIRECTORY = "/home/pi/BM_Devel_Pi/images"
 BUFFER_DIRECTORY = "/home/pi/BM_Devel_Pi/buffer"
 LOG_FILE = "/home/pi/BM_Devel_Pi/camera_log.csv"
 
-# Define the image quality and compression values
-COMPRESSION_QUALITY = 25  # Adjust this value as needed (e.g., 25, 50, 75)
-RESOLUTION_KEY = "1080p"  # Adjust this value as needed "720p", "1080p"...
+# Define default image settings.
+# image_quality follows standard encoder convention:
+#   0   = lowest image quality / most compression / smallest file
+#   100 = highest image quality / least compression / largest file
+IMAGE_QUALITY = 25
 
+# Backward-compatible alias for older code/comments. Prefer IMAGE_QUALITY in new code.
+COMPRESSION_QUALITY = IMAGE_QUALITY
 
+# Default resolution key. Deployment defaults can also be set in camera_schedule.yaml.
+RESOLUTION_KEY = "720p"
 
-# Define the available resolution options
+# Define the available resolution options.
 RESOLUTIONS = {
-	"12MP": (4056, 3040),
-	"8MP": (3264, 2448),
-	"5MP": (2592, 1944),
-	"4MP": (2464, 1848),
+	# 16:9 presets — preferred when you want roughly the same wide scene/FOV
+	# while reducing pixel density, file size, and transmit time.
+	"native_12mp": (4608, 2592),
+	"12MP": (4608, 2592),  # legacy alias for native_12mp on IMX708
+	"4k": (3840, 2160),
+	"2.7k": (2704, 1520),
+	"1296p": (2304, 1296),
 	"1080p": (1920, 1080),
 	"720p": (1280, 720),
-	"VGA": (640, 480)
+	"480p": (854, 480),
+	"360p": (640, 360),
+
+	# 4:3 presets — useful if you intentionally want a narrower/taller crop.
+	# This can help avoid distorted edge regions from the lens and reduce file size.
+	"4_3_full_crop": (3456, 2592),
+	"4_3_8mp": (3264, 2448),
+	"8MP": (3264, 2448),  # legacy alias
+	"4_3_5mp": (2592, 1944),
+	"5MP": (2592, 1944),  # legacy alias
+	"4_3_3mp": (2048, 1536),
+	"4_3_2mp": (1600, 1200),
+	"4_3_1080": (1440, 1080),
+	"XGA": (1024, 768),
+	"SVGA": (800, 600),
+	"VGA": (640, 480),
 }
 
 def debug_print(message):
@@ -70,7 +94,7 @@ def generate_filename():
 	return f"{current_timestamp}_image.jpg"
 
 
-def capture_image(resolution_key="VGA", directory_path=IMAGE_DIRECTORY):
+def capture_image(resolution_key=RESOLUTION_KEY, directory_path=IMAGE_DIRECTORY):
 	"""Capture an image with the specified resolution and save it in the directory."""
 	resolution = validate_resolution(resolution_key)
 
@@ -132,7 +156,7 @@ def get_file_size(file_path):
 	return 0
 
 
-def split_image_jpeg(image_path, buffer_directory, compression_quality):
+def split_image_jpeg(image_path, buffer_directory, image_quality):
 	"""Splits the image into base64-encoded buffers."""
 	if os.path.exists(buffer_directory):
 		shutil.rmtree(buffer_directory)
@@ -147,8 +171,8 @@ def split_image_jpeg(image_path, buffer_directory, compression_quality):
 	if image is None:
 		raise ValueError(f"Failed to load image from path: {image_path}")
 	
-	# Compress the image to JPEG format
-	retval, buffer = cv2.imencode('.jpg', image, [int(cv2.IMWRITE_JPEG_QUALITY), compression_quality])
+	# Encode the image to JPEG format
+	retval, buffer = cv2.imencode('.jpg', image, [int(cv2.IMWRITE_JPEG_QUALITY), image_quality])
 	if not retval:
 		raise ValueError("Failed to encode image")
 
@@ -181,8 +205,8 @@ def split_image_jpeg(image_path, buffer_directory, compression_quality):
 	debug_print(f"Saved {buffer_number} buffer txt files.")
 
 
-def split_image_heic(image_path, compression_quality=25):
-	"""Compress the image to HEIC and split into buffers."""
+def split_image_heic(image_path, image_quality=25):
+	"""Encode the image to HEIC and split into buffers."""
 	if os.path.exists(BUFFER_DIRECTORY):
 		shutil.rmtree(BUFFER_DIRECTORY)
 		debug_print("Deleted buffers directory")
@@ -196,7 +220,7 @@ def split_image_heic(image_path, compression_quality=25):
 	
 	# Open the image and save it as HEIC
 	with Image.open(image_path) as img:
-		img.save(heic_output_path, format="HEIF", quality=compression_quality)
+		img.save(heic_output_path, format="HEIF", quality=image_quality)
 	
 	# Get the file size in bytes
 	file_size = os.path.getsize(heic_output_path)
@@ -266,11 +290,11 @@ def send_buffers(buffer_directory, compressed_file_name):
 		#bm.uart.close()
 
 
-def compress_and_send_image(image_path, compression_quality=25):
-	"""Compress the image to HEIC, save it, and send buffers."""
+def compress_and_send_image(image_path, image_quality=IMAGE_QUALITY):
+	"""Encode the image to HEIC, save it, and send buffers."""
 	# Compress the image and get details
 	compressed_file_name, num_buffers, file_size_compressed = split_image_heic(
-		image_path, compression_quality=compression_quality
+		image_path, image_quality=image_quality
 	)
 	
 	# Send buffers
@@ -280,7 +304,7 @@ def compress_and_send_image(image_path, compression_quality=25):
 
 def log_message(
 		rtc_time, compressed_image_filename, file_size_raw, file_size_compressed,
-		compression_quality, num_buffers, execution_time, within_window, cpu_temp
+		image_quality, num_buffers, execution_time, within_window, cpu_temp
 	):
 		"""
 		Log details to the CSV file and print a concise log message to the terminal.
@@ -295,14 +319,14 @@ def log_message(
 			if not file_exists:
 				writer.writerow([
 					"RTC Timestamp (UTC)", "Compressed Image Filename", "Raw File Size (bytes)",
-					"Compressed File Size (bytes)", "Compression Quality", "Number of Buffers",
+					"Compressed File Size (bytes)", "Image Quality", "Number of Buffers",
 					"Execution Time (minutes)", "Within Time Window", "CPU Temp (°C)"
 				])
 	
 			# Log message content for local CSV file
 			writer.writerow([
 				rtc_time.strftime('%Y-%m-%dT%H:%M:%SZ'), compressed_image_filename, file_size_raw,
-				file_size_compressed, COMPRESSION_QUALITY, num_buffers, 
+				file_size_compressed, image_quality, num_buffers, 
 				f"{execution_time:.2f}", within_window, f"{cpu_temp:.2f}"
 			])
 	
@@ -311,7 +335,7 @@ def log_message(
 			# 	f"RTC: {rtc_time.strftime('%Y-%m-%dT%H:%M:%SZ')}, "
 			# 	f"File: {compressed_image_filename}, "
 			# 	f"Raw Size: {file_size_raw} bytes, Compressed Size: {file_size_compressed} bytes, "
-			# 	f"Quality: {COMPRESSION_QUALITY}, Buffers: {num_buffers}, "
+			# 	f"Quality: {IMAGE_QUALITY}, Buffers: {num_buffers}, "
 			# 	f"Execution Time: {execution_time:.2f} min, Within Window: {within_window}, "
 			# 	f"CPU Temp: {cpu_temp:.2f}°C"
 			# )
@@ -325,7 +349,7 @@ def log_message(
 			#time.sleep(1)
 			#debug_print(f"File: {compressed_image_filename}")
 			debug_print(f"Raw image size: {file_size_raw} bytes")
-			debug_print(f"Quality: {COMPRESSION_QUALITY}")
+			debug_print(f"Image quality: {image_quality}")
 			debug_print(f"Compressed image size: {file_size_compressed} bytes")
 			debug_print(f"Buffers: {num_buffers}")
 			debug_print(f"Execution Time: {execution_time:.2f} min")
