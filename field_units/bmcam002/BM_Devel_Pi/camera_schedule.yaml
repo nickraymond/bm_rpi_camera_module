@@ -3,7 +3,7 @@
 # For San Francisco / Los Angeles testing:
 #   America/Los_Angeles
 #
-# For Florida Keys / US East Coast deployment:
+# For Florida Keys deployment:
 #   America/New_York
 #
 # Time is evaluated by reading Spotter UTC from the BM bus and converting
@@ -11,14 +11,13 @@
 
 timezone: "America/Los_Angeles"
 
+# Deployment safety gate. Keep true for field deployment.
+# For one-off manual testing, prefer CLI flag: --skip-time-window
+enforce_spotter_time_window: true
+
 transmit_window:
   start: "12:00"
   end: "15:00"
-
-# Image defaults used by main_pi_camera.py unless overridden on the CLI.
-image:
-  resolution_key: "720p"
-  image_quality: 25
 
 set_system_clock_from_spotter: true
 spotter_time_timeout_seconds: 60
@@ -26,3 +25,8 @@ allow_system_clock_fallback: false
 
 uart_port: "/dev/ttyAMA0"
 baudrate: 115200
+
+# Default image settings. CLI values override these for one run.
+image:
+  resolution_key: "720p"
+  image_quality: 25

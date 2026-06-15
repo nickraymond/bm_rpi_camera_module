@@ -1,53 +1,39 @@
-# bmcam002 reef camera field notes
+# bmcam002 potted camera field guide
 
-This folder tracks the lightweight potted-camera code used for bmcam002 field testing and reef shipment.
+This folder contains the field-tested potted camera code for `bmcam002`.
 
-## Current scope
+## Current mission-safe behavior
 
-The production path intentionally stays small:
+At the start of each camera cycle, `main_pi_camera.py` can subscribe to Spotter UTC time on the Bristlemouth bus before it takes an image.
 
-- Use the existing `main_pi_camera.py`, `process_image_v2.py`, and `bm_serial.py` capture/transmit flow.
-- Subscribe to Spotter UTC time at the start of each cycle.
-- Use Spotter UTC converted into a configured local timezone to decide whether capture/transmit is allowed.
-- Keep the proven Bristlemouth transmit path: `BUFFER_SIZE = 300` and network byte `x01` in `bm_serial.py`.
-
-## Spotter UTC time gate
-
-At the start of each camera cycle, `main_pi_camera.py` calls `spotter_time_sync.py`.
-
-The time-sync helper does the following:
-
-1. Opens the Pi UART to the potted Bristlemouth serial bridge.
-2. Sends an official `BM_SERIAL_SUB` subscription for `spotter/utc-time`.
-   - The outbound subscribe packet is COBS-framed and terminated with `0x00`.
-   - The known-good frame for `spotter/utc-time` is 24 bytes.
-3. Receives raw/decoded BM serial publish packets from the custom serial bridge.
-4. Finds the `spotter/utc-time` topic.
-5. Decodes the following 8-byte little-endian timestamp as microseconds since Unix epoch.
-6. Optionally sets the Pi system clock from Spotter UTC.
-7. Converts Spotter UTC to the configured local timezone.
-8. Allows capture/transmit only if the local time is inside the configured window.
-
-If Spotter time is unavailable and `allow_system_clock_fallback: false`, the system fails closed and skips capture/transmit.
-
-## Configuration file
-
-Runtime defaults live in:
+The subscription is sent from the Pi to the potted mote as an official `BM_SERIAL_SUB` packet, COBS framed and terminated with `0x00`. The topic is:
 
 ```text
-/home/pi/BM_Devel_Pi/camera_schedule.yaml
+spotter/utc-time
 ```
 
-Tracked source copy:
+The potted mote forwards matching BM bus messages back to the Pi UART. The Pi decodes the raw inbound `spotter/utc-time` payload as a little-endian `uint64` timestamp in microseconds since Unix epoch. The code then:
 
-```text
-field_units/bmcam002/BM_Devel_Pi/camera_schedule.yaml
+1. Converts Spotter UTC into the configured local timezone.
+2. Checks the configured local transmit window.
+3. Continues capture/transmit only if the local time is inside that window.
+4. Fails closed if Spotter time is unavailable and fallback is disabled.
+
+The legacy local `Within Window` field still exists in the old code path, but it is kept permissive. The Spotter UTC schedule is the intended deployment gate.
+
+## Schedule and image defaults
+
+Edit this file on the Pi for deployment defaults:
+
+```bash
+nano /home/pi/BM_Devel_Pi/camera_schedule.yaml
 ```
 
-Example:
+Current testing default:
 
 ```yaml
 timezone: "America/Los_Angeles"
+enforce_spotter_time_window: true
 
 transmit_window:
   start: "12:00"
@@ -56,28 +42,27 @@ transmit_window:
 image:
   resolution_key: "720p"
   image_quality: 25
-
-set_system_clock_from_spotter: true
-spotter_time_timeout_seconds: 60
-allow_system_clock_fallback: false
-
-uart_port: "/dev/ttyAMA0"
-baudrate: 115200
 ```
 
-### Common timezones
+For manual one-off tests outside the schedule, use the CLI flag:
+
+```bash
+--skip-time-window
+```
+
+This is called a **CLI flag** because it is a boolean command-line switch. In the YAML file, `enforce_spotter_time_window` is the equivalent configuration variable.
+
+## Useful timezones
 
 Use IANA timezone names.
 
 | Region | Timezone |
 |---|---|
 | Hawaii | `Pacific/Honolulu` |
-| US West Coast / San Francisco / Los Angeles | `America/Los_Angeles` |
+| US West Coast / California | `America/Los_Angeles` |
 | US East Coast / Florida Keys | `America/New_York` |
-| Australia East Coast, Sydney/Melbourne | `Australia/Sydney` |
-| Australia East Coast, Queensland / Brisbane | `Australia/Brisbane` |
+| Australia East Coast / Sydney | `Australia/Sydney` |
 | Australia West Coast / Perth | `Australia/Perth` |
-| UTC testing | `UTC` |
 
 For Florida Keys deployment, use:
 
@@ -87,54 +72,57 @@ timezone: "America/New_York"
 
 ## Image quality convention
 
-The system uses `image_quality`, following the standard encoder convention used by HEIC/JPEG tools:
+The image quality value is encoder quality, not compression amount.
+
+| Value | Meaning |
+|---:|---|
+| `0` | lowest image quality, most compression, smallest file |
+| `25` | current field default |
+| `100` | highest image quality, least compression, largest file |
+
+For bandwidth-constrained field testing:
 
 ```text
-0   = lowest image quality / most compression / smallest file
-25  = good bandwidth-constrained field default
-40  = better image quality, larger payload
-100 = highest image quality / least compression / largest file
+15 = aggressive compression / small diagnostic image
+25 = recommended field default
+40 = better quality / larger payload
+60+ = likely large unless resolution is small
+100 = least compressed / largest encoded file
 ```
 
-Do not interpret `image_quality = 100` as maximum compression. It is the opposite: highest quality and largest file.
+The current HEIC/JPEG path always encodes the image. `image_quality=100` is the least-compressed supported mode in this code path; it is not raw/uncompressed image output.
 
 ## Resolution presets
 
-`process_image_v2.py` defines the valid `resolution_key` values.
+The IMX708 sensor and current camera path support both wide 16:9-style presets and cropped/taller 4:3-style presets.
 
 ### 16:9 presets
 
-Use these when the goal is to keep roughly the same wide scene/FOV while reducing pixel density, file size, transmit time, and energy use.
+Use these when the goal is to keep roughly the same wide scene/FOV while reducing pixel density, file size, and transmission time.
 
-| Key | Size | Notes |
+| Key | Size | Use |
 |---|---:|---|
-| `native_12mp` | 4608x2592 | IMX708 native 16:9-style full sensor output |
-| `12MP` | 4608x2592 | Legacy alias for `native_12mp` |
+| `native_12mp` | 4608x2592 | Native IMX708 16:9-style full frame |
+| `12MP` | 4608x2592 | Alias for native 12MP |
 | `4k` | 3840x2160 | High detail, large files |
 | `2.7k` | 2704x1520 | High detail, smaller than 4K |
-| `1296p` | 2304x1296 | Good high-detail 16:9 test size |
+| `1296p` | 2304x1296 | Native-looking 16:9 test size |
 | `1080p` | 1920x1080 | Standard HD |
-| `720p` | 1280x720 | Recommended field default |
-| `480p` | 854x480 | Bandwidth-constrained field test |
+| `720p` | 1280x720 | Current recommended field default |
+| `480p` | 854x480 | Bandwidth-constrained test |
 | `360p` | 640x360 | Very small diagnostic image |
-
-For same scene with smaller files, test in this order:
-
-```text
-1080p → 720p → 480p → 360p
-```
 
 ### 4:3 presets
 
-Use these if intentionally cropping to a narrower/taller view. This can be useful with a wide lens and IMX708 if the outer image edges show stronger barrel distortion. Cropping edge regions can reduce distortion, file size, transmit time, and energy use.
+Use these if intentionally cropping to a narrower/taller view. This may be useful with the IMX708 and wide lens if the outer image edges show stronger barrel distortion. Cropping the edge regions can reduce distortion, file size, transmit time, and energy use.
 
-| Key | Size | Notes |
+| Key | Size | Use |
 |---|---:|---|
-| `4_3_full_crop` | 3456x2592 | Tall/full 4:3 crop from IMX708 height |
+| `4_3_full_crop` | 3456x2592 | Tall/full 4:3 crop |
 | `4_3_8mp` | 3264x2448 | High-detail 4:3 |
-| `8MP` | 3264x2448 | Legacy alias for `4_3_8mp` |
+| `8MP` | 3264x2448 | Alias for 4:3 8MP |
 | `4_3_5mp` | 2592x1944 | Medium/high 4:3 |
-| `5MP` | 2592x1944 | Legacy alias for `4_3_5mp` |
+| `5MP` | 2592x1944 | Alias for 4:3 5MP |
 | `4_3_3mp` | 2048x1536 | Medium 4:3 |
 | `4_3_2mp` | 1600x1200 | Smaller 4:3 |
 | `4_3_1080` | 1440x1080 | 4:3 HD-style test |
@@ -142,88 +130,57 @@ Use these if intentionally cropping to a narrower/taller view. This can be usefu
 | `SVGA` | 800x600 | Very small 4:3 |
 | `VGA` | 640x480 | Smallest diagnostic 4:3 |
 
+For same scene with smaller files, prefer:
+
+```text
+1080p → 720p → 480p → 360p
+```
+
 For cropped/taller framing to reduce edge distortion, test:
 
 ```text
 4_3_1080 → XGA → VGA
 ```
 
-## How to run
+## Commands
 
-Run from the production folder on the Pi:
+### Test Spotter UTC schedule only
 
 ```bash
 cd /home/pi/BM_Devel_Pi
-```
-
-### Clock/window test only
-
-```bash
 /usr/bin/python3 -u spotter_time_sync.py
 ```
 
-Expected output includes:
-
-```text
-allowed=True/False
-source_time: spotter
-utc_time: ...
-local_time: ...
-reason: ...
-```
-
-### Capture only, no transmit
-
-This checks Spotter time, checks the configured local window, captures an image if allowed, logs the result, but does not transmit image buffers.
+### Capture only, using YAML defaults
 
 ```bash
+cd /home/pi/BM_Devel_Pi
 /usr/bin/python3 -u main_pi_camera.py
 ```
 
-### Capture and transmit
-
-This checks Spotter time, checks the configured local window, captures, encodes, splits into 300-byte buffers, and transmits over the proven legacy x01 path.
+### Capture and transmit, using YAML defaults
 
 ```bash
+cd /home/pi/BM_Devel_Pi
 /usr/bin/python3 -u main_pi_camera.py --transmit
 ```
 
-### Override resolution for one run
+### Capture only with local CLI overrides
 
 ```bash
-/usr/bin/python3 -u main_pi_camera.py --resolution-key 480p
+/usr/bin/python3 -u main_pi_camera.py --resolution-key 480p --image-quality 20 --skip-time-window
 ```
 
-### Override image quality for one run
+### Capture and transmit with local CLI overrides
 
 ```bash
-/usr/bin/python3 -u main_pi_camera.py --image-quality 20
+/usr/bin/python3 -u main_pi_camera.py --transmit --resolution-key 480p --image-quality 20 --skip-time-window
 ```
 
-### Override both and transmit
+### Least-compressed supported encoded image test
 
 ```bash
-/usr/bin/python3 -u main_pi_camera.py --transmit --resolution-key 480p --image-quality 20
+/usr/bin/python3 -u main_pi_camera.py --resolution-key 720p --image-quality 100 --skip-time-window
 ```
 
-CLI arguments override `camera_schedule.yaml` for that one run only. They do not edit the config file.
-
-## Deployment defaults
-
-For local San Francisco testing:
-
-```yaml
-timezone: "America/Los_Angeles"
-image:
-  resolution_key: "720p"
-  image_quality: 25
-```
-
-For Florida Keys deployment:
-
-```yaml
-timezone: "America/New_York"
-image:
-  resolution_key: "720p"
-  image_quality: 25
-```
+Check the file size before transmitting high-quality images.

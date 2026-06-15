@@ -32,338 +32,328 @@ TOPIC = b"spotter/utc-time"
 
 @dataclass
 class CameraSchedule:
-    timezone: str = "America/Los_Angeles"
-    transmit_start: str = "12:00"
-    transmit_end: str = "15:00"
-    set_system_clock_from_spotter: bool = True
-    spotter_time_timeout_seconds: int = 60
-    allow_system_clock_fallback: bool = False
-    uart_port: str = "/dev/ttyAMA0"
-    baudrate: int = 115200
-    resolution_key: str = "720p"
-    image_quality: int = 25
+	timezone: str = "America/Los_Angeles"
+	transmit_start: str = "12:00"
+	transmit_end: str = "15:00"
+	enforce_spotter_time_window: bool = True
+	set_system_clock_from_spotter: bool = True
+	spotter_time_timeout_seconds: int = 60
+	allow_system_clock_fallback: bool = False
+	uart_port: str = "/dev/ttyAMA0"
+	baudrate: int = 115200
+	resolution_key: str = "720p"
+	image_quality: int = 25
 
 
 def _parse_bool(value: str) -> bool:
-    return value.strip().lower() in {"true", "yes", "1", "on"}
+	return value.strip().lower() in {"true", "yes", "1", "on"}
 
 
 def load_camera_schedule(path: str = "camera_schedule.yaml") -> CameraSchedule:
-    """
-    Tiny parser for the specific camera_schedule.yaml shape.
-    Avoids adding PyYAML to the field unit.
+	"""
+	Tiny parser for the specific camera_schedule.yaml shape.
+	Avoids adding PyYAML to the field unit.
+	"""
+	cfg = CameraSchedule()
+	if not os.path.exists(path):
+		return cfg
 
-    Supported sections:
-      transmit_window:
-        start: "12:00"
-        end: "15:00"
-      image:
-        resolution_key: "720p"
-        image_quality: 25
-    """
-    cfg = CameraSchedule()
-    if not os.path.exists(path):
-        return cfg
+	section = None
+	with open(path, "r", encoding="utf-8") as f:
+		for raw in f:
+			line = raw.split("#", 1)[0].rstrip()
+			if not line.strip():
+				continue
 
-    section = None
-    with open(path, "r", encoding="utf-8") as f:
-        for raw in f:
-            line = raw.split("#", 1)[0].rstrip()
-            if not line.strip():
-                continue
+			stripped = line.strip()
+			if stripped == "transmit_window:":
+				section = "transmit_window"
+				continue
+			if stripped == "image:":
+				section = "image"
+				continue
 
-            stripped = line.strip()
-            if stripped.endswith(":") and ":" not in stripped[:-1]:
-                section = stripped[:-1]
-                continue
+			if ":" not in stripped:
+				continue
 
-            if ":" not in stripped:
-                continue
+			key, value = stripped.split(":", 1)
+			key = key.strip()
+			value = value.strip().strip('"').strip("'")
 
-            key, value = stripped.split(":", 1)
-            key = key.strip()
-            value = value.strip().strip('"').strip("'")
+			# Any non-indented key returns to top level.
+			if not raw.startswith(" ") and key not in {"transmit_window", "image"}:
+				section = None
 
-            if not raw.startswith(" ") and key not in {"transmit_window", "image"}:
-                section = None
+			if section == "transmit_window":
+				if key == "start":
+					cfg.transmit_start = value
+				elif key == "end":
+					cfg.transmit_end = value
+				continue
 
-            if section == "transmit_window":
-                if key == "start":
-                    cfg.transmit_start = value
-                elif key == "end":
-                    cfg.transmit_end = value
-                continue
+			if section == "image":
+				if key == "resolution_key":
+					cfg.resolution_key = value
+				elif key == "image_quality":
+					cfg.image_quality = int(value)
+				continue
 
-            if section == "image":
-                if key == "resolution_key":
-                    cfg.resolution_key = value
-                elif key == "image_quality":
-                    cfg.image_quality = int(value)
-                continue
+			if key == "timezone":
+				cfg.timezone = value
+			elif key == "enforce_spotter_time_window":
+				cfg.enforce_spotter_time_window = _parse_bool(value)
+			elif key == "set_system_clock_from_spotter":
+				cfg.set_system_clock_from_spotter = _parse_bool(value)
+			elif key == "spotter_time_timeout_seconds":
+				cfg.spotter_time_timeout_seconds = int(value)
+			elif key == "allow_system_clock_fallback":
+				cfg.allow_system_clock_fallback = _parse_bool(value)
+			elif key == "uart_port":
+				cfg.uart_port = value
+			elif key == "baudrate":
+				cfg.baudrate = int(value)
 
-            if key == "timezone":
-                cfg.timezone = value
-            elif key == "set_system_clock_from_spotter":
-                cfg.set_system_clock_from_spotter = _parse_bool(value)
-            elif key == "spotter_time_timeout_seconds":
-                cfg.spotter_time_timeout_seconds = int(value)
-            elif key == "allow_system_clock_fallback":
-                cfg.allow_system_clock_fallback = _parse_bool(value)
-            elif key == "uart_port":
-                cfg.uart_port = value
-            elif key == "baudrate":
-                cfg.baudrate = int(value)
+	return cfg
 
-    return cfg
 
 def _crc(seed: int, src: bytes) -> int:
-    """
-    CRC used by the Bristlemouth serial Python examples.
-    This produces the known-good subscribe packet:
-      raw 03 00 7c 8c 10 00 ...
-      COBS frame length 24 for spotter/utc-time.
-    """
-    for i in src:
-        e = (seed ^ i) & 0xFF
-        f = e ^ ((e << 4) & 0xFF)
-        seed = (seed >> 8) ^ (((f << 8) & 0xFFFF) ^ ((f << 3) & 0xFFFF)) ^ (f >> 4)
-    return seed
+	for i in src:
+		e = (seed ^ i) & 0xFF
+		f = e ^ ((e << 4) & 0xFF)
+		seed = (seed >> 8) ^ (((f << 8) & 0xFFFF) ^ ((f << 3) & 0xFFFF)) ^ (f >> 4)
+	return seed
 
 
 def _cobs_encode(in_bytes: bytes) -> bytes:
-    final_zero = True
-    out_bytes = bytearray()
-    idx = 0
-    search_start_idx = 0
+	final_zero = True
+	out_bytes = bytearray()
+	idx = 0
+	search_start_idx = 0
 
-    for in_char in in_bytes:
-        if in_char == 0:
-            final_zero = True
-            out_bytes.append(idx - search_start_idx + 1)
-            out_bytes += in_bytes[search_start_idx:idx]
-            search_start_idx = idx + 1
-        else:
-            if idx - search_start_idx == 0xFD:
-                final_zero = False
-                out_bytes.append(0xFF)
-                out_bytes += in_bytes[search_start_idx:idx + 1]
-                search_start_idx = idx + 1
-        idx += 1
+	for in_char in in_bytes:
+		if in_char == 0:
+			final_zero = True
+			out_bytes.append(idx - search_start_idx + 1)
+			out_bytes += in_bytes[search_start_idx:idx]
+			search_start_idx = idx + 1
+		else:
+			if idx - search_start_idx == 0xFD:
+				final_zero = False
+				out_bytes.append(0xFF)
+				out_bytes += in_bytes[search_start_idx:idx + 1]
+				search_start_idx = idx + 1
+		idx += 1
 
-    if idx != search_start_idx or final_zero:
-        out_bytes.append(idx - search_start_idx + 1)
-        out_bytes += in_bytes[search_start_idx:idx]
+	if idx != search_start_idx or final_zero:
+		out_bytes.append(idx - search_start_idx + 1)
+		out_bytes += in_bytes[search_start_idx:idx]
 
-    return bytes(out_bytes)
+	return bytes(out_bytes)
 
 
 def _finalize_packet(packet: bytearray) -> bytes:
-    checksum = _crc(0, packet)
-    packet[2] = checksum & 0xFF
-    packet[3] = (checksum >> 8) & 0xFF
-    return _cobs_encode(packet) + b"\x00"
+	checksum = _crc(0, packet)
+	packet[2] = checksum & 0xFF
+	packet[3] = (checksum >> 8) & 0xFF
+	return _cobs_encode(packet) + b"\x00"
 
 
 def _build_subscribe_frame(topic: bytes) -> bytes:
-    """
-    Official BM_SERIAL_SUB shape:
-      03 00 00 00 + topic_len_le_u16 + topic
-
-    For spotter/utc-time:
-      raw packet length = 22 bytes
-      COBS-framed length = 24 bytes
-    """
-    packet = bytearray.fromhex("03000000") + len(topic).to_bytes(2, "little") + topic
-    return _finalize_packet(packet)
+	"""
+	Official BM_SERIAL_SUB shape:
+	  03 00 00 00 + topic_len_le_u16 + topic
+	"""
+	packet = bytearray.fromhex("03000000") + len(topic).to_bytes(2, "little") + topic
+	return _finalize_packet(packet)
 
 
 def _utc_from_us(utc_us: int) -> dt.datetime:
-    return dt.datetime.fromtimestamp(utc_us / 1_000_000.0, tz=dt.timezone.utc)
+	return dt.datetime.fromtimestamp(utc_us / 1_000_000.0, tz=dt.timezone.utc)
 
 
 def _find_clock_payload(buffer: bytes) -> Optional[Tuple[int, int, dt.datetime]]:
-    """
-    Scan raw inbound bytes for 'spotter/utc-time' followed by an 8-byte
-    little-endian uint64 timestamp in microseconds since Unix epoch.
-    """
-    start = 0
-    while True:
-        idx = buffer.find(TOPIC, start)
-        if idx < 0:
-            return None
+	start = 0
+	while True:
+		idx = buffer.find(TOPIC, start)
+		if idx < 0:
+			return None
 
-        payload_start = idx + len(TOPIC)
-        payload_end = payload_start + 8
-        if len(buffer) < payload_end:
-            return None
+		payload_start = idx + len(TOPIC)
+		payload_end = payload_start + 8
+		if len(buffer) < payload_end:
+			return None
 
-        payload = buffer[payload_start:payload_end]
-        utc_us = struct.unpack("<Q", payload)[0]
+		payload = buffer[payload_start:payload_end]
+		utc_us = struct.unpack("<Q", payload)[0]
 
-        min_us = int(dt.datetime(2020, 1, 1, tzinfo=dt.timezone.utc).timestamp() * 1_000_000)
-        max_us = int(dt.datetime(2035, 1, 1, tzinfo=dt.timezone.utc).timestamp() * 1_000_000)
+		min_us = int(dt.datetime(2020, 1, 1, tzinfo=dt.timezone.utc).timestamp() * 1_000_000)
+		max_us = int(dt.datetime(2035, 1, 1, tzinfo=dt.timezone.utc).timestamp() * 1_000_000)
 
-        if min_us <= utc_us <= max_us:
-            return idx, utc_us, _utc_from_us(utc_us)
+		if min_us <= utc_us <= max_us:
+			return idx, utc_us, _utc_from_us(utc_us)
 
-        # Manual test payload like "test" fails plausibility; keep scanning.
-        start = idx + 1
+		start = idx + 1
 
 
 def read_spotter_utc(
-    timeout_seconds: int = 60,
-    port: str = "/dev/ttyAMA0",
-    baudrate: int = 115200,
-    verbose: bool = False,
+	timeout_seconds: int = 60,
+	port: str = "/dev/ttyAMA0",
+	baudrate: int = 115200,
+	verbose: bool = False,
 ) -> dt.datetime:
-    if verbose:
-        print(f"[SYNC] opening UART port={port} baudrate={baudrate}")
-        print(f"[SYNC] sending official BM_SERIAL_SUB for {TOPIC.decode()}")
+	if verbose:
+		print(f"[SYNC] opening UART port={port} baudrate={baudrate}")
+		print(f"[SYNC] sending official BM_SERIAL_SUB for {TOPIC.decode()}")
 
-    with serial.Serial(port, baudrate=baudrate, timeout=0.1) as ser:
-        try:
-            ser.reset_input_buffer()
-        except Exception:
-            pass
+	with serial.Serial(port, baudrate=baudrate, timeout=0.1) as ser:
+		try:
+			ser.reset_input_buffer()
+		except Exception:
+			pass
 
-        frame = _build_subscribe_frame(TOPIC)
-        wrote = ser.write(frame)
-        ser.flush()
+		frame = _build_subscribe_frame(TOPIC)
+		wrote = ser.write(frame)
+		ser.flush()
 
-        if verbose:
-            print(f"[SYNC] subscribe wrote={wrote} frame_bytes={len(frame)} frame={frame.hex(' ')}")
-            print(f"[SYNC] listening up to {timeout_seconds}s for Spotter UTC...")
+		if verbose:
+			print(f"[SYNC] subscribe wrote={wrote} frame_bytes={len(frame)} frame={frame.hex(' ')}")
+			print(f"[SYNC] listening up to {timeout_seconds}s for Spotter UTC...")
 
-        deadline = time.time() + timeout_seconds
-        buffer = bytearray()
+		deadline = time.time() + timeout_seconds
+		buffer = bytearray()
 
-        while time.time() < deadline:
-            chunk = ser.read(256)
-            if not chunk:
-                continue
+		while time.time() < deadline:
+			chunk = ser.read(256)
+			if not chunk:
+				continue
 
-            if verbose:
-                printable = ''.join(chr(b) if 32 <= b <= 126 else '.' for b in chunk)
-                print(f"[SYNC][RAW] rx={len(chunk)} hex={chunk.hex(' ')} ascii={printable}")
+			if verbose:
+				printable = ''.join(chr(b) if 32 <= b <= 126 else '.' for b in chunk)
+				print(f"[SYNC][RAW] rx={len(chunk)} hex={chunk.hex(' ')} ascii={printable}")
 
-            buffer.extend(chunk)
-            if len(buffer) > 4096:
-                del buffer[: len(buffer) - 4096]
+			buffer.extend(chunk)
+			if len(buffer) > 4096:
+				del buffer[: len(buffer) - 4096]
 
-            found = _find_clock_payload(bytes(buffer))
-            if found:
-                _idx, _utc_us, utc_dt = found
-                if verbose:
-                    print(f"[SYNC] decoded Spotter UTC: {utc_dt.isoformat()}")
-                return utc_dt
+			found = _find_clock_payload(bytes(buffer))
+			if found:
+				_idx, _utc_us, utc_dt = found
+				if verbose:
+					print(f"[SYNC] decoded Spotter UTC: {utc_dt.isoformat()}")
+				return utc_dt
 
-    raise TimeoutError(f"No valid {TOPIC.decode()} message received within {timeout_seconds}s")
+	raise TimeoutError(f"No valid {TOPIC.decode()} message received within {timeout_seconds}s")
 
 
 def set_system_clock_utc(utc_dt: dt.datetime) -> None:
-    """
-    Set Linux system clock to UTC.
-    Uses sudo -n when not root, so it fails fast instead of hanging on a password prompt.
-    """
-    utc_dt = utc_dt.astimezone(dt.timezone.utc)
-    iso = utc_dt.strftime("%Y-%m-%d %H:%M:%S")
+	"""
+	Set Linux system clock to UTC.
+	Uses sudo -n when not root, so it fails fast instead of hanging on a password prompt.
+	"""
+	utc_dt = utc_dt.astimezone(dt.timezone.utc)
+	iso = utc_dt.strftime("%Y-%m-%d %H:%M:%S")
 
-    if os.geteuid() == 0:
-        cmd = ["date", "-u", "-s", iso]
-    else:
-        cmd = ["sudo", "-n", "date", "-u", "-s", iso]
+	if os.geteuid() == 0:
+		cmd = ["date", "-u", "-s", iso]
+	else:
+		cmd = ["sudo", "-n", "date", "-u", "-s", iso]
 
-    subprocess.run(cmd, check=True)
+	subprocess.run(cmd, check=True)
 
 
 def _parse_hhmm(value: str) -> dt.time:
-    hh, mm = value.split(":", 1)
-    return dt.time(hour=int(hh), minute=int(mm))
+	hh, mm = value.split(":", 1)
+	return dt.time(hour=int(hh), minute=int(mm))
 
 
 def is_within_local_window(
-    utc_dt: dt.datetime,
-    timezone_name: str,
-    start_hhmm: str,
-    end_hhmm: str,
+	utc_dt: dt.datetime,
+	timezone_name: str,
+	start_hhmm: str,
+	end_hhmm: str,
 ) -> Tuple[bool, dt.datetime]:
-    tz = ZoneInfo(timezone_name)
-    local_dt = utc_dt.astimezone(tz)
-    local_t = local_dt.time()
-    start = _parse_hhmm(start_hhmm)
-    end = _parse_hhmm(end_hhmm)
+	tz = ZoneInfo(timezone_name)
+	local_dt = utc_dt.astimezone(tz)
+	local_t = local_dt.time()
+	start = _parse_hhmm(start_hhmm)
+	end = _parse_hhmm(end_hhmm)
 
-    if start <= end:
-        allowed = start <= local_t < end
-    else:
-        allowed = local_t >= start or local_t < end
+	if start <= end:
+		allowed = start <= local_t < end
+	else:
+		allowed = local_t >= start or local_t < end
 
-    return allowed, local_dt
+	return allowed, local_dt
 
 
 def should_transmit_now_from_schedule(
-    config_path: str = "camera_schedule.yaml",
-    verbose: bool = False,
+	config_path: str = "camera_schedule.yaml",
+	verbose: bool = False,
 ) -> Tuple[bool, Dict[str, str]]:
-    cfg = load_camera_schedule(config_path)
-    info: Dict[str, str] = {
-        "timezone": cfg.timezone,
-        "window": f"{cfg.transmit_start}-{cfg.transmit_end}",
-    }
+	cfg = load_camera_schedule(config_path)
+	info: Dict[str, str] = {
+		"timezone": cfg.timezone,
+		"window": f"{cfg.transmit_start}-{cfg.transmit_end}",
+	}
 
-    try:
-        utc_dt = read_spotter_utc(
-            timeout_seconds=cfg.spotter_time_timeout_seconds,
-            port=cfg.uart_port,
-            baudrate=cfg.baudrate,
-            verbose=verbose,
-        )
-        info["source_time"] = "spotter"
-        info["utc_time"] = utc_dt.isoformat()
+	if not cfg.enforce_spotter_time_window:
+		info["source_time"] = "skipped"
+		info["reason"] = "Spotter UTC transmit-window check disabled by config"
+		return True, info
 
-        if cfg.set_system_clock_from_spotter:
-            try:
-                set_system_clock_utc(utc_dt)
-                info["set_system_clock"] = "ok"
-            except Exception as e:
-                # Still use Spotter UTC for the window decision.
-                info["set_system_clock"] = f"failed: {e}"
+	try:
+		utc_dt = read_spotter_utc(
+			timeout_seconds=cfg.spotter_time_timeout_seconds,
+			port=cfg.uart_port,
+			baudrate=cfg.baudrate,
+			verbose=verbose,
+		)
+		info["source_time"] = "spotter"
+		info["utc_time"] = utc_dt.isoformat()
 
-    except Exception as e:
-        info["source_time"] = "system"
-        info["spotter_time_error"] = str(e)
+		if cfg.set_system_clock_from_spotter:
+			try:
+				set_system_clock_utc(utc_dt)
+				info["set_system_clock"] = "ok"
+			except Exception as e:
+				# Still use Spotter UTC for the window decision.
+				info["set_system_clock"] = f"failed: {e}"
 
-        if not cfg.allow_system_clock_fallback:
-            info["reason"] = f"Spotter time unavailable and fallback disabled: {e}"
-            return False, info
+	except Exception as e:
+		info["source_time"] = "system"
+		info["spotter_time_error"] = str(e)
 
-        utc_dt = dt.datetime.now(dt.timezone.utc)
-        info["utc_time"] = utc_dt.isoformat()
+		if not cfg.allow_system_clock_fallback:
+			info["reason"] = f"Spotter time unavailable and fallback disabled: {e}"
+			return False, info
 
-    allowed, local_dt = is_within_local_window(
-        utc_dt=utc_dt,
-        timezone_name=cfg.timezone,
-        start_hhmm=cfg.transmit_start,
-        end_hhmm=cfg.transmit_end,
-    )
+		utc_dt = dt.datetime.now(dt.timezone.utc)
+		info["utc_time"] = utc_dt.isoformat()
 
-    info["local_time"] = local_dt.isoformat()
-    if allowed:
-        info["reason"] = (
-            f"Within transmit window {cfg.transmit_start}-{cfg.transmit_end} "
-            f"{cfg.timezone}; local_time={local_dt.isoformat()}"
-        )
-    else:
-        info["reason"] = (
-            f"Outside transmit window {cfg.transmit_start}-{cfg.transmit_end} "
-            f"{cfg.timezone}; local_time={local_dt.isoformat()}"
-        )
+	allowed, local_dt = is_within_local_window(
+		utc_dt=utc_dt,
+		timezone_name=cfg.timezone,
+		start_hhmm=cfg.transmit_start,
+		end_hhmm=cfg.transmit_end,
+	)
 
-    return allowed, info
+	info["local_time"] = local_dt.isoformat()
+	if allowed:
+		info["reason"] = (
+			f"Within transmit window {cfg.transmit_start}-{cfg.transmit_end} "
+			f"{cfg.timezone}; local_time={local_dt.isoformat()}"
+		)
+	else:
+		info["reason"] = (
+			f"Outside transmit window {cfg.transmit_start}-{cfg.transmit_end} "
+			f"{cfg.timezone}; local_time={local_dt.isoformat()}"
+		)
+
+	return allowed, info
 
 
 if __name__ == "__main__":
-    allowed, info = should_transmit_now_from_schedule("camera_schedule.yaml", verbose=True)
-    print(f"allowed={allowed}")
-    for k, v in info.items():
-        print(f"{k}: {v}")
+	allowed, info = should_transmit_now_from_schedule("camera_schedule.yaml", verbose=True)
+	print(f"allowed={allowed}")
+	for k, v in info.items():
+		print(f"{k}: {v}")

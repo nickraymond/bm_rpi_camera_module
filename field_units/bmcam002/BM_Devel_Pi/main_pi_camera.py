@@ -23,7 +23,8 @@ from datetime import datetime, timezone
 
 from process_image_v2 import (
 	capture_image, compress_and_send_image, get_cpu_temperature, get_file_size, debug_print,
-	IMAGE_DIRECTORY, BUFFER_SIZE, log_message, IMAGE_QUALITY, RESOLUTION_KEY, RESOLUTIONS, DEBUG, close_bm_serial
+	IMAGE_DIRECTORY, BUFFER_SIZE, log_message, IMAGE_QUALITY, RESOLUTION_KEY, RESOLUTIONS,
+	DEBUG, close_bm_serial
 )
 from spotter_time_sync import should_transmit_now_from_schedule, load_camera_schedule
 
@@ -36,7 +37,8 @@ USE_RTC = False  # Set to True if using a hardware RTC; False will use the Pi's 
 USE_SPOTTER_TIME_WINDOW = True
 SCHEDULE_CONFIG_PATH = "/home/pi/BM_Devel_Pi/camera_schedule.yaml"
 
-# Time window in military format (e.g., 00:00 to 23:59 means "always run")
+# Legacy local time window in military format (e.g., 00:00 to 23:59 means "always run").
+# Keep this permissive. The Spotter UTC schedule is the real deployment gate.
 time_start = (0, 0)
 time_end = (23, 59)
 
@@ -55,7 +57,7 @@ def get_rtc_time():
 
 
 def is_within_time_window(current_time, time_start, time_end):
-	"""Check if the current time is within the specified time window."""
+	"""Check if the current time is within the legacy local time window."""
 	start_time = datetime(current_time.year, current_time.month, current_time.day, time_start[0], time_start[1]).time()
 	end_time = datetime(current_time.year, current_time.month, current_time.day, time_end[0], time_end[1]).time()
 	is_within = start_time <= current_time.time() < end_time
@@ -63,30 +65,53 @@ def is_within_time_window(current_time, time_start, time_end):
 	return is_within
 
 
-def get_runtime_image_settings(resolution_key_override=None, image_quality_override=None):
-	"""Load default image settings from camera_schedule.yaml and apply CLI overrides."""
-	cfg = load_camera_schedule(SCHEDULE_CONFIG_PATH)
+def get_runtime_image_settings(config_path, resolution_key_override=None, image_quality_override=None):
+	"""Return image settings from YAML defaults with optional CLI overrides."""
+	cfg = load_camera_schedule(config_path)
 
-	resolution_key = resolution_key_override or getattr(cfg, "resolution_key", RESOLUTION_KEY) or RESOLUTION_KEY
-	image_quality = image_quality_override if image_quality_override is not None else getattr(cfg, "image_quality", IMAGE_QUALITY)
+	resolution_key = resolution_key_override or cfg.resolution_key or RESOLUTION_KEY
+	image_quality = image_quality_override if image_quality_override is not None else cfg.image_quality
+	if image_quality is None:
+		image_quality = IMAGE_QUALITY
 
 	if resolution_key not in RESOLUTIONS:
-		raise ValueError(f"Invalid resolution key '{resolution_key}'. Choose from: {', '.join(sorted(RESOLUTIONS.keys()))}")
+		raise ValueError(f"Invalid resolution key '{resolution_key}'. Choose from: {', '.join(RESOLUTIONS.keys())}")
 
-	image_quality = int(image_quality)
-	if image_quality < 0 or image_quality > 100:
-		raise ValueError("image_quality must be between 0 and 100. Lower = smaller/more compressed; higher = larger/better quality.")
+	if not (0 <= int(image_quality) <= 100):
+		raise ValueError("image_quality must be between 0 and 100. Lower = smaller/more compressed; higher = better/larger.")
 
-	return resolution_key, image_quality
+	return resolution_key, int(image_quality), cfg
 
 
-def main(transmit_image=False, resolution_key_override=None, image_quality_override=None):
+def main(
+	transmit_image=False,
+	resolution_key=None,
+	image_quality=None,
+	skip_time_window=False,
+	config_path=SCHEDULE_CONFIG_PATH,
+):
 	"""Main function to orchestrate the camera workflow."""
 	start_time = time.time()
 
-	if USE_SPOTTER_TIME_WINDOW:
+	try:
+		runtime_resolution_key, runtime_image_quality, schedule_cfg = get_runtime_image_settings(
+			config_path,
+			resolution_key_override=resolution_key,
+			image_quality_override=image_quality,
+		)
+	except Exception as e:
+		debug_print(f"Image/config setup failed: {e}")
+		close_bm_serial()
+		return
+
+	debug_print(f"Runtime resolution_key: {runtime_resolution_key}")
+	debug_print(f"Runtime image_quality: {runtime_image_quality}")
+
+	if skip_time_window:
+		debug_print("Skipping Spotter UTC transmit-window check due to CLI flag --skip-time-window.")
+	elif USE_SPOTTER_TIME_WINDOW and schedule_cfg.enforce_spotter_time_window:
 		try:
-			allowed, schedule_info = should_transmit_now_from_schedule(SCHEDULE_CONFIG_PATH)
+			allowed, schedule_info = should_transmit_now_from_schedule(config_path)
 			debug_print(f"Schedule check: {schedule_info.get('reason')}")
 			debug_print(f"Schedule source_time: {schedule_info.get('source_time')}")
 			debug_print(f"Schedule UTC: {schedule_info.get('utc_time')}")
@@ -101,18 +126,8 @@ def main(transmit_image=False, resolution_key_override=None, image_quality_overr
 			debug_print(f"Spotter-time schedule check failed closed: {e}")
 			close_bm_serial()
 			return
-
-	try:
-		runtime_resolution_key, runtime_image_quality = get_runtime_image_settings(
-			resolution_key_override=resolution_key_override,
-			image_quality_override=image_quality_override,
-		)
-		debug_print(f"Image resolution key: {runtime_resolution_key}")
-		debug_print(f"Image quality: {runtime_image_quality}")
-	except Exception as e:
-		debug_print(f"Invalid image settings. Skipping capture/transmit: {e}")
-		close_bm_serial()
-		return
+	else:
+		debug_print("Spotter UTC transmit-window check disabled by config/code. Continuing.")
 
 	# Choose the source for current time based on the USE_RTC flag.
 	current_time = get_rtc_time() if USE_RTC else datetime.now()
@@ -129,7 +144,8 @@ def main(transmit_image=False, resolution_key_override=None, image_quality_overr
 			if transmit_image:
 				# Compress and transmit image
 				compressed_file_name, num_buffers, file_size_compressed = compress_and_send_image(
-					image_path, image_quality=runtime_image_quality
+					image_path,
+					image_quality=runtime_image_quality,
 				)
 			else:
 				compressed_file_name = "N/A"
@@ -140,7 +156,7 @@ def main(transmit_image=False, resolution_key_override=None, image_quality_overr
 			end_time = time.time()
 			execution_time = (end_time - start_time) / 60
 
-			# Log the details; using 'within_window' for record-keeping.
+			# Log the details; using 'within_window' for legacy record-keeping.
 			log_message(
 				current_time, compressed_file_name, file_size_raw, file_size_compressed,
 				runtime_image_quality, num_buffers, execution_time, within_window, cpu_temp
@@ -148,7 +164,7 @@ def main(transmit_image=False, resolution_key_override=None, image_quality_overr
 
 			close_bm_serial()
 		else:
-			debug_print("Not within the time window. Skipping capture.")
+			debug_print("Not within the legacy local time window. Skipping capture.")
 	else:
 		debug_print("Failed to retrieve time.")
 
@@ -156,25 +172,20 @@ def main(transmit_image=False, resolution_key_override=None, image_quality_overr
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser(description="Camera capture script with optional UART transmission.")
 	parser.add_argument('--transmit', action='store_true', help='Enable transmission over UART after capture')
-	parser.add_argument(
-		'--resolution-key',
-		default=None,
-		choices=sorted(RESOLUTIONS.keys()),
-		help='Override image resolution key for this run. Default comes from camera_schedule.yaml.',
-	)
-	parser.add_argument(
-		'--image-quality',
-		type=int,
-		default=None,
-		help='Override encoder image quality for this run, 0-100. Lower = smaller/more compressed; higher = larger/better quality.',
-	)
+	parser.add_argument('--resolution-key', choices=sorted(RESOLUTIONS.keys()), default=None,
+					help='Override image resolution preset for this run')
+	parser.add_argument('--image-quality', type=int, default=None,
+					help='Override encoder image quality 0-100. Lower = smaller/more compressed; higher = better/larger')
+	parser.add_argument('--skip-time-window', action='store_true',
+					help='Manual override: skip the Spotter UTC transmit-window check for this run')
+	parser.add_argument('--config-path', default=SCHEDULE_CONFIG_PATH,
+					help='Path to camera_schedule.yaml')
 	args = parser.parse_args()
-
-	if args.image_quality is not None and not (0 <= args.image_quality <= 100):
-		parser.error('--image-quality must be between 0 and 100')
 
 	main(
 		transmit_image=args.transmit,
-		resolution_key_override=args.resolution_key,
-		image_quality_override=args.image_quality,
+		resolution_key=args.resolution_key,
+		image_quality=args.image_quality,
+		skip_time_window=args.skip_time_window,
+		config_path=args.config_path,
 	)
