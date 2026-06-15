@@ -1,0 +1,23 @@
+# Local deployment schedule for bmcam002 reef deployment.
+#
+# For San Francisco / Los Angeles testing:
+#   America/Los_Angeles
+#
+# For Florida Keys deployment:
+#   America/New_York
+#
+# Time is evaluated by reading Spotter UTC from the BM bus and converting
+# that UTC timestamp into this local timezone.
+
+timezone: "America/Los_Angeles"
+
+transmit_window:
+  start: "12:00"
+  end: "15:00"
+
+set_system_clock_from_spotter: true
+spotter_time_timeout_seconds: 60
+allow_system_clock_fallback: false
+
+uart_port: "/dev/ttyAMA0"
+baudrate: 115200

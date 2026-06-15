@@ -103,9 +103,16 @@ from process_image_v2 import (
 	capture_image, compress_and_send_image, get_cpu_temperature, get_file_size, debug_print,
 	IMAGE_DIRECTORY, BUFFER_SIZE, log_message, COMPRESSION_QUALITY, RESOLUTION_KEY, DEBUG, close_bm_serial
 )
+from spotter_time_sync import should_transmit_now_from_schedule
 
 # ==== CONFIGURATION ====
 USE_RTC = False  # Set to True if using a hardware RTC; False will use the Pi's system clock.
+
+# Reef shipment safety gate:
+# Read Spotter UTC from the BM bus, convert it using camera_schedule.yaml,
+# and only continue capture/transmit inside the configured local window.
+USE_SPOTTER_TIME_WINDOW = True
+SCHEDULE_CONFIG_PATH = "/home/pi/BM_Devel_Pi/camera_schedule.yaml"
 
 # Time window in military format (e.g., 00:00 to 23:59 means "always run")
 time_start = (0, 0)
@@ -137,6 +144,24 @@ def is_within_time_window(current_time, time_start, time_end):
 def main(transmit_image=False):
 	"""Main function to orchestrate the camera workflow."""
 	start_time = time.time()
+
+	if USE_SPOTTER_TIME_WINDOW:
+		try:
+			allowed, schedule_info = should_transmit_now_from_schedule(SCHEDULE_CONFIG_PATH)
+			debug_print(f"Schedule check: {schedule_info.get('reason')}")
+			debug_print(f"Schedule source_time: {schedule_info.get('source_time')}")
+			debug_print(f"Schedule UTC: {schedule_info.get('utc_time')}")
+			debug_print(f"Schedule local: {schedule_info.get('local_time')}")
+			debug_print(f"Schedule set_system_clock: {schedule_info.get('set_system_clock')}")
+
+			if not allowed:
+				debug_print("Outside configured Spotter-time transmit window. Skipping capture/transmit.")
+				close_bm_serial()
+				return
+		except Exception as e:
+			debug_print(f"Spotter-time schedule check failed closed: {e}")
+			close_bm_serial()
+			return
 
 	# Choose the source for current time based on the USE_RTC flag.
 	current_time = get_rtc_time() if USE_RTC else datetime.now()
