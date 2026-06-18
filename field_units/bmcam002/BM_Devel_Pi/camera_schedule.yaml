@@ -1,26 +1,38 @@
 # Local deployment schedule for bmcam002 reef deployment.
 #
-# For San Francisco / Los Angeles testing:
-#   America/Los_Angeles
-#
-# For Florida Keys deployment:
-#   America/New_York
-#
 # Time is evaluated by reading Spotter UTC from the BM bus and converting
-# that UTC timestamp into this local timezone.
+# that UTC timestamp into this local timezone before the camera captures.
+#
+# Option A: use a preset alias. Leave blank to use timezone directly.
+# Useful presets:
+#   sf, california, us_west        -> America/Los_Angeles
+#   florida, florida_keys, us_east -> America/New_York
+#   hawaii                        -> Pacific/Honolulu
+#   sydney, australia_east         -> Australia/Sydney
+#   perth, australia_west          -> Australia/Perth
+#   utc                            -> UTC
+timezone_preset: "sf"
 
+# Option B: direct IANA timezone. Used when timezone_preset is blank.
 timezone: "America/Los_Angeles"
 
 # Deployment safety gate. Keep true for field deployment.
 # For one-off manual testing, prefer CLI flag: --skip-time-window
 enforce_spotter_time_window: true
 
+# Local time window. End is exclusive: 12:00-15:00 means allowed from
+# 12:00:00 through 14:59:59 local time.
+# For San Francisco development testing, use 08:00-15:00.
+# For reef production, use 12:00-15:00.
 transmit_window:
-  start: "12:00"
+  start: "08:00"
   end: "15:00"
 
+# Let Spotter/Bristlemouth UTC set the Pi Linux system clock each run.
 set_system_clock_from_spotter: true
 spotter_time_timeout_seconds: 60
+
+# Field safety behavior. false = fail closed if Spotter UTC is unavailable.
 allow_system_clock_fallback: false
 
 uart_port: "/dev/ttyAMA0"
